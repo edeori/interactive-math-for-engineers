@@ -1,0 +1,58 @@
+[
+  {
+    "id": "00-foundations",
+    "order": 0,
+    "title": "Szintrehozó alapok",
+    "subtitle": "0. fejezet",
+    "description": "A középiskolai és egyetemi előfeltételek célzott újraépítése diagnosztikával, mértékegységekkel és mérnöki példákkal."
+  },
+  {
+    "id": "01-change-and-calculus",
+    "order": 1,
+    "title": "A változás matematikája",
+    "subtitle": "1. fejezet",
+    "description": "Határérték, derivált, gradiens és optimalizálás audió burkolók, tranziensek és fizikai mozgások segítségével."
+  },
+  {
+    "id": "02-integration",
+    "order": 2,
+    "title": "Felhalmozás és integrálás",
+    "subtitle": "2. fejezet",
+    "description": "Terület, energia, átlagérték, numerikus integrálás és többváltozós felhalmozás."
+  },
+  {
+    "id": "03-complex-linear-algebra",
+    "order": 3,
+    "title": "Komplex számok és lineáris algebra",
+    "subtitle": "3. fejezet",
+    "description": "Fázis, mátrixok, lineáris rendszerek, bázisváltás, sajátértékek és legkisebb négyzetek."
+  },
+  {
+    "id": "04-differential-equations",
+    "order": 4,
+    "title": "Differenciálegyenletek és dinamikus rendszerek",
+    "subtitle": "4. fejezet",
+    "description": "RC- és RLC-körök, rezonátorok, stabilitás, állapottér és numerikus időfejlődés."
+  },
+  {
+    "id": "05-fourier-dsp",
+    "order": 5,
+    "title": "Fourier-analízis és DSP",
+    "subtitle": "5. fejezet",
+    "description": "Spektrum, mintavételezés, konvolúció, z-transzformáció, FIR/IIR szűrők és rendszerstabilitás."
+  },
+  {
+    "id": "06-probability-statistics",
+    "order": 6,
+    "title": "Valószínűség és statisztika",
+    "subtitle": "6. fejezet",
+    "description": "Bizonytalanság, eloszlások, becslés, hipotézisvizsgálat, regresszió és detektorértékelés."
+  },
+  {
+    "id": "07-numerical-optimization",
+    "order": 7,
+    "title": "Numerikus módszerek és optimalizálás",
+    "subtitle": "7. fejezet",
+    "description": "Lebegőpontos hibák, gyökkeresés, interpoláció, solverk, gradiensmódszerek és modellillesztés."
+  }
+]

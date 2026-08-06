@@ -1,0 +1,424 @@
+[
+  {
+    "lessonId": "00-exp-log",
+    "sections": [
+      {
+        "type": "objectives",
+        "title": "Exponenciális és logaritmikus rutinok",
+        "body": "A lényeg az additív és multiplikatív változás megkülönböztetése.",
+        "items": [
+          "Felismered a lineáris és exponenciális változás különbségét.",
+          "Hatvány- és logaritmusazonosságokat használsz.",
+          "Exponenciális egyenletet logaritmussal oldasz meg.",
+          "Természetes és tízes alapú logaritmust a megfelelő modellhez választasz."
+        ]
+      },
+      {
+        "type": "worked-example",
+        "title": "Példa: ismételt feleződés",
+        "body": "Egy mennyiség 2 másodpercenként felére csökken, kezdeti értéke 80.",
+        "steps": [
+          "t=0-nál 80, t=2-nél 40, t=4-nél 20: az abszolút csökkenés nem állandó.",
+          "A feleződések száma t/2, ezért A(t)=80·(1/2)^(t/2).",
+          "t=6 másodpercnél három feleződés történt: A=80/8=10.",
+          "A logaritmus akkor kell, ha az időt keressük egy megadott célszinthez."
+        ]
+      },
+      {
+        "type": "common-mistakes",
+        "title": "Logaritmikus hibák",
+        "body": "A logaritmus szorzást ad össze, nem összeadást.",
+        "items": [
+          {
+            "mistake": "log(a+b)=log a+log b",
+            "correction": "Nincs ilyen azonosság; log(ab)=log a+log b."
+          },
+          {
+            "mistake": "A logaritmus argumentuma lehet nulla vagy negatív a valós számok között.",
+            "correction": "Valós logaritmushoz az argumentum szigorúan pozitív."
+          },
+          {
+            "mistake": "Az exponenciális lecsengést konstans mennyiségű csökkenésnek veszem.",
+            "correction": "Azonos idő alatt konstans arányú csökkenés történik."
+          }
+        ]
+      }
+    ],
+    "checkpoints": [
+      {
+        "id": "log-product",
+        "title": "Logaritmusazonosság",
+        "prompt": "Melyik egyenlő log(ab)-vel pozitív a és b esetén?",
+        "difficulty": 2,
+        "context": "abstract",
+        "options": [
+          { "id": "sum", "label": "log a+log b" },
+          { "id": "product", "label": "log a·log b" },
+          { "id": "difference", "label": "log a−log b" }
+        ],
+        "answer": "sum",
+        "hint": "A logaritmus a szorzást összeadássá alakítja."
+      },
+      {
+        "id": "doubling",
+        "title": "Exponenciális növekedés",
+        "prompt": "Egy mennyiség óránként kétszereződik. Hányszoros lesz 3 óra után?",
+        "difficulty": 1,
+        "context": "abstract",
+        "options": [
+          { "id": "8", "label": "8-szoros" },
+          { "id": "6", "label": "6-szoros" },
+          { "id": "9", "label": "9-szeres" }
+        ],
+        "answer": "8",
+        "hint": "Három egymás utáni kétszerezés: 2³."
+      },
+      {
+        "id": "solve-exponential",
+        "title": "Exponenciális egyenlet",
+        "prompt": "Mennyi x, ha 10ˣ=1000?",
+        "difficulty": 1,
+        "context": "electronics",
+        "options": [
+          { "id": "3", "label": "3" },
+          { "id": "100", "label": "100" },
+          { "id": "10", "label": "10" }
+        ],
+        "answer": "3",
+        "hint": "1000=10³."
+      },
+      {
+        "id": "db-ratio-intuition",
+        "title": "Logaritmikus skála",
+        "prompt": "Miért praktikus a logaritmikus skála nagyon széles jeltartománynál?",
+        "difficulty": 2,
+        "context": "audio",
+        "options": [
+          {
+            "id": "compress",
+            "label": "A szorzási arányokat összeadható, kezelhető tartományba tömöríti"
+          },
+          {
+            "id": "linear",
+            "label": "Minden nemlineáris rendszert lineárissá tesz"
+          },
+          { "id": "exact", "label": "Megszüntet minden mérési hibát" }
+        ],
+        "answer": "compress",
+        "hint": "A logaritmus a nagyságrendeket és arányokat kompaktabban ábrázolja."
+      }
+    ]
+  },
+  {
+    "lessonId": "00-trigonometry",
+    "sections": [
+      {
+        "type": "objectives",
+        "title": "Periodikus gondolkodás",
+        "body": "A trigonometria nem háromszögtáblázat, hanem a forgás és periodicitás koordinátanyelve.",
+        "items": [
+          "Fokot radiánra és radiánt fokra váltasz.",
+          "Egységkörből értelmezed a szinuszt és koszinuszt.",
+          "Amplitúdót, frekvenciát, periódusidőt és fázist különválasztasz.",
+          "Alapazonosságokat használsz periodikus modellekben."
+        ]
+      },
+      {
+        "type": "worked-example",
+        "title": "Példa: hang periódusa és fázisa",
+        "body": "Egy 250 Hz-es szinuszjel fázisa π/2.",
+        "steps": [
+          "A periódusidő T=1/f=1/250 s=4 ms.",
+          "A π/2 fázis a ciklus negyedét jelenti.",
+          "Időeltolásként ez T/4=1 ms.",
+          "Pozitív fázis az alkalmazott jelkonvenciótól függően időbeli előretolást jelent; mindig írd ki a használt alakot."
+        ]
+      },
+      {
+        "type": "common-mistakes",
+        "title": "Trigonometriai csapdák",
+        "body": "Mindig ellenőrizd, fokban vagy radiánban dolgozik-e az eszköz.",
+        "items": [
+          {
+            "mistake": "sin bemenetébe 90-et írok, miközben a függvény radiánt vár.",
+            "correction": "90°=π/2 radián."
+          },
+          {
+            "mistake": "A frekvenciát összekeverem a körfrekvenciával.",
+            "correction": "ω=2πf; egysége rad/s, míg f egysége Hz."
+          },
+          {
+            "mistake": "A fázist amplitúdóváltozásnak veszem.",
+            "correction": "A fázis a cikluson belüli pozíciót, nem a csúcsnagyságot változtatja."
+          }
+        ]
+      }
+    ],
+    "checkpoints": [
+      {
+        "id": "degrees-radians",
+        "title": "Fok–radián átváltás",
+        "prompt": "Mennyi 180° radiánban?",
+        "difficulty": 1,
+        "context": "abstract",
+        "options": [
+          { "id": "pi", "label": "π" },
+          { "id": "2pi", "label": "2π" },
+          { "id": "halfpi", "label": "π/2" }
+        ],
+        "answer": "pi",
+        "hint": "Egy fél fordulat 180° és π radián."
+      },
+      {
+        "id": "period",
+        "title": "Periódusidő",
+        "prompt": "Mennyi egy 50 Hz-es periodikus jel periódusideje?",
+        "difficulty": 2,
+        "context": "electronics",
+        "options": [
+          { "id": "20ms", "label": "20 ms" },
+          { "id": "50ms", "label": "50 ms" },
+          { "id": "2ms", "label": "2 ms" }
+        ],
+        "answer": "20ms",
+        "hint": "T=1/f=1/50 s."
+      },
+      {
+        "id": "unit-circle",
+        "title": "Egységkör",
+        "prompt": "Mennyi cos(π)?",
+        "difficulty": 1,
+        "context": "abstract",
+        "options": [
+          { "id": "minus1", "label": "−1" },
+          { "id": "zero", "label": "0" },
+          { "id": "one", "label": "1" }
+        ],
+        "answer": "minus1",
+        "hint": "π radiánnál az egységkör pontja (−1,0)."
+      },
+      {
+        "id": "angular-frequency",
+        "title": "Körfrekvencia",
+        "prompt": "Mi a 100 Hz-es szinusz körfrekvenciája?",
+        "difficulty": 2,
+        "context": "audio",
+        "options": [
+          { "id": "200pi", "label": "200π rad/s" },
+          { "id": "100pi", "label": "100π rad/s" },
+          { "id": "50", "label": "50 rad/s" }
+        ],
+        "answer": "200pi",
+        "hint": "ω=2πf."
+      }
+    ]
+  },
+  {
+    "lessonId": "00-vectors-coordinates",
+    "sections": [
+      {
+        "type": "objectives",
+        "title": "Vektorgondolkodás",
+        "body": "A vektor nem pusztán számlista: a koordináták a választott tengelyektől függenek, a geometriai mennyiség nem.",
+        "items": [
+          "Vektort komponensekre bontasz és hosszát kiszámítod.",
+          "Vektorokat összeadsz és skalárral szorzol.",
+          "Skalárszorzatból szöget és projekciót értelmezel.",
+          "Megkülönbözteted a geometriai vektort a koordinátareprezentációjától."
+        ]
+      },
+      {
+        "type": "worked-example",
+        "title": "Példa: sztereó Mid/Side intuíció",
+        "body": "Egy pillanatban L=0,8 és R=0,2.",
+        "steps": [
+          "A sztereó minta v=(0,8; 0,2) vektor.",
+          "Egy gyakori normalizált definíció: M=(L+R)/2=0,5 és S=(L−R)/2=0,3.",
+          "M a közös, S a különbségi komponenst méri.",
+          "Ez koordinátaváltás ugyanabban a kétdimenziós jeltérben; az információ visszaalakítható L=M+S, R=M−S szerint."
+        ]
+      },
+      {
+        "type": "common-mistakes",
+        "title": "Vektorhibák",
+        "body": "A művelet eredménytípusát is ellenőrizd: skalár vagy vektor lesz-e.",
+        "items": [
+          {
+            "mistake": "A vektor hosszát a komponensek összegének veszem.",
+            "correction": "Euklideszi hosszhoz a komponensek négyzetösszegének gyöke kell."
+          },
+          {
+            "mistake": "A skalárszorzat eredményét vektornak kezelem.",
+            "correction": "A dot product skalár; iránybeli hasonlóságot mér."
+          },
+          {
+            "mistake": "Különböző koordinátarendszerben megadott komponenseket közvetlenül összeadok.",
+            "correction": "Előbb közös bázisba kell transzformálni őket."
+          }
+        ]
+      }
+    ],
+    "checkpoints": [
+      {
+        "id": "length",
+        "title": "Vektorhossz",
+        "prompt": "Mennyi a (3,4) vektor euklideszi hossza?",
+        "difficulty": 1,
+        "context": "mechanics",
+        "options": [
+          { "id": "5", "label": "5" },
+          { "id": "7", "label": "7" },
+          { "id": "12", "label": "12" }
+        ],
+        "answer": "5",
+        "hint": "√(3²+4²)."
+      },
+      {
+        "id": "dot",
+        "title": "Skalárszorzat",
+        "prompt": "Mennyi (1,2)·(3,−1)?",
+        "difficulty": 2,
+        "context": "abstract",
+        "options": [
+          { "id": "1", "label": "1" },
+          { "id": "5", "label": "5" },
+          { "id": "minus1", "label": "−1" }
+        ],
+        "answer": "1",
+        "hint": "A megfelelő komponensek szorzatát add össze: 1·3+2·(−1)."
+      },
+      {
+        "id": "orthogonal",
+        "title": "Merőlegesség",
+        "prompt": "Miből ismerhető fel két nem nulla vektor merőlegessége?",
+        "difficulty": 2,
+        "context": "abstract",
+        "options": [
+          { "id": "dotzero", "label": "Skalárszorzatuk nulla" },
+          { "id": "same", "label": "Hosszuk egyenlő" },
+          { "id": "sumzero", "label": "Összegük nulla" }
+        ],
+        "answer": "dotzero",
+        "hint": "u·v=‖u‖‖v‖cosθ, és cos90°=0."
+      },
+      {
+        "id": "stereo-sum",
+        "title": "Sztereó vektorművelet",
+        "prompt": "Ha két sztereó mintavektor (0,2;0,1) és (0,3;−0,1), mi az összegük?",
+        "difficulty": 1,
+        "context": "audio",
+        "options": [
+          { "id": "05zero", "label": "(0,5; 0)" },
+          { "id": "06zero", "label": "(0,6; 0)" },
+          { "id": "minus0102", "label": "(−0,1; 0,2)" }
+        ],
+        "answer": "05zero",
+        "hint": "Komponensenként adj össze."
+      }
+    ]
+  },
+  {
+    "lessonId": "00-sums-units",
+    "sections": [
+      {
+        "type": "objectives",
+        "title": "Összegzés és egységbiztonság",
+        "body": "A jelölésnek és az egységeknek ugyanúgy ellenőrizhetőnek kell lenniük, mint a programkódnak.",
+        "items": [
+          "Szigmajelölést kibontasz és tömörítesz.",
+          "Aritmetikai és geometriai sorozatot felismered.",
+          "SI-előtagokat és összetett egységeket átváltasz.",
+          "Dimenzióanalízissel hibás képletet szűrsz ki."
+        ]
+      },
+      {
+        "type": "worked-example",
+        "title": "Példa: diszkrét jelenergia",
+        "body": "Legyen x=[1,−2,2] egy dimenziótlan mintasorozat.",
+        "steps": [
+          "A diszkrét négyzetösszeg E=Σₙx[n]².",
+          "Tagonként: 1²+(−2)²+2²=1+4+4=9.",
+          "Az előjelek nem oltják ki egymást a négyzetelés miatt.",
+          "Fizikai energia közelítésénél a mintavételi idő Tₛ tényezője is szükséges lehet; mindig a modell definícióját kövesd."
+        ]
+      },
+      {
+        "type": "common-mistakes",
+        "title": "Index- és egységhibák",
+        "body": "A határok befoglalását és az egységváltást írd ki explicit módon.",
+        "items": [
+          {
+            "mistake": "0-tól N-ig összegezve N taggal számolok.",
+            "correction": "Mindkét határt beleértve N+1 tag van."
+          },
+          {
+            "mistake": "ms és s értékeket átváltás nélkül adok össze.",
+            "correction": "Összeadás előtt minden tagot közös egységre kell hozni."
+          },
+          {
+            "mistake": "Dimenziótlan trigonometrikus argumentumba mértékegységes mennyiséget teszek.",
+            "correction": "A sin, exp és log argumentumának dimenziótlannak kell lennie."
+          }
+        ]
+      }
+    ],
+    "checkpoints": [
+      {
+        "id": "sigma",
+        "title": "Szigma kibontása",
+        "prompt": "Mennyi Σᵢ₌₁⁴ i?",
+        "difficulty": 1,
+        "context": "abstract",
+        "options": [
+          { "id": "10", "label": "10" },
+          { "id": "6", "label": "6" },
+          { "id": "15", "label": "15" }
+        ],
+        "answer": "10",
+        "hint": "Bontsd ki: 1+2+3+4."
+      },
+      {
+        "id": "index-count",
+        "title": "Indexek száma",
+        "prompt": "Hány tagja van a Σₙ₌₀⁵ x[n] összegnek?",
+        "difficulty": 1,
+        "context": "audio",
+        "options": [
+          { "id": "6", "label": "6" },
+          { "id": "5", "label": "5" },
+          { "id": "4", "label": "4" }
+        ],
+        "answer": "6",
+        "hint": "Az indexek: 0,1,2,3,4,5."
+      },
+      {
+        "id": "unit-convert",
+        "title": "Időegység átváltása",
+        "prompt": "Mennyi 2,5 ms másodpercben?",
+        "difficulty": 1,
+        "context": "audio",
+        "options": [
+          { "id": "00025", "label": "0,0025 s" },
+          { "id": "0025", "label": "0,025 s" },
+          { "id": "2500", "label": "2500 s" }
+        ],
+        "answer": "00025",
+        "hint": "A milli 10⁻³."
+      },
+      {
+        "id": "dimension",
+        "title": "Dimenzióanalízis",
+        "prompt": "Melyik képlet ad távolságot állandó v sebességből és t időből?",
+        "difficulty": 1,
+        "context": "mechanics",
+        "options": [
+          { "id": "vt", "label": "s=vt" },
+          { "id": "vdivt", "label": "s=v/t" },
+          { "id": "tdivv", "label": "s=t/v" }
+        ],
+        "answer": "vt",
+        "hint": "(m/s)·s=m."
+      }
+    ]
+  }
+]

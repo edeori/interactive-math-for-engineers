@@ -1,0 +1,250 @@
+[
+  {
+    "id": "03-complex-euler",
+    "moduleId": "03-complex-linear-algebra",
+    "order": 1,
+    "title": "Komplex számok, polárforma és Euler-formula",
+    "summary": "Valós és képzetes komponens, nagyság, fázis és forgás egységes nyelve.",
+    "estimatedMinutes": 45,
+    "prerequisiteLessonIds": ["00-trigonometry", "00-vectors-coordinates"],
+    "skill": {
+      "id": "skill-complex-numbers",
+      "title": "Komplex számok",
+      "description": "Komplex számok derékszögű és poláris reprezentációjának használata.",
+      "category": "linear-algebra"
+    },
+    "realWorldProblem": "Egy szűrő frekvenciaválasza egyszerre mondja meg az amplitúdóarányt és a fázistolást.",
+    "intuition": [
+      "A komplex szám a sík egy pontja vagy vektora.",
+      "Komplex exponenciálissal a szorzás skálázássá és forgatássá válik."
+    ],
+    "formalModel": "z=a+jb=re^(jφ),   e^(jφ)=cosφ+j sinφ",
+    "applications": [
+      "Komplex frekvenciaválasz és fázis.",
+      "Szinuszos állandósult állapot elektromos hálózatban."
+    ],
+    "checkpoint": {
+      "prompt": "Mit jelent egy komplex szám argumentuma?",
+      "options": [
+        { "id": "phase", "label": "A komplex síkbeli szögét, vagyis fázisát" },
+        { "id": "magnitude", "label": "Csak a valós részét" },
+        { "id": "power", "label": "A négyzetét" }
+      ],
+      "answer": "phase",
+      "hint": "Polárformában z=re^(jφ), ahol φ a szög."
+    }
+  },
+  {
+    "id": "03-vector-spaces",
+    "moduleId": "03-complex-linear-algebra",
+    "order": 2,
+    "title": "Vektorterek és lineáris kombinációk",
+    "summary": "Vektorok, alterek, függetlenség, kifeszített tér és dimenzió.",
+    "estimatedMinutes": 45,
+    "prerequisiteLessonIds": ["03-complex-euler"],
+    "skill": {
+      "id": "skill-vector-spaces",
+      "title": "Vektorterek",
+      "description": "Lineáris kombinációk, függetlenség és dimenzió felismerése.",
+      "category": "linear-algebra"
+    },
+    "realWorldProblem": "Több mikrofon jele egy sokdimenziós pont, amelyet csatornák lineáris kombinációjával alakítunk át.",
+    "intuition": [
+      "A kifeszített tér minden elérhető lineáris kombináció halmaza.",
+      "Független vektorok közül egyik sem állítható elő a többiből."
+    ],
+    "formalModel": "v = c₁v₁ + … + cₖvₖ",
+    "applications": [
+      "Többcsatornás audió mintavektorok.",
+      "Erők és állapotváltozók reprezentációja."
+    ],
+    "checkpoint": {
+      "prompt": "Mikor lineárisan függetlenek a vektorok?",
+      "options": [
+        {
+          "id": "zero",
+          "label": "Ha csak a triviális együtthatókkal adnak nullát"
+        },
+        { "id": "same", "label": "Ha mind egyenlők" },
+        { "id": "unit", "label": "Ha mind egységnyi hosszúak" }
+      ],
+      "answer": "zero",
+      "hint": "A c₁v₁+…+cₖvₖ=0 egyenlet megoldásait vizsgáld."
+    }
+  },
+  {
+    "id": "03-matrices-transformations",
+    "moduleId": "03-complex-linear-algebra",
+    "order": 3,
+    "title": "Mátrixok és lineáris transzformációk",
+    "summary": "Mátrixszorzás mint komponensek keverése, forgatás, skálázás és csatornatranszformáció.",
+    "estimatedMinutes": 45,
+    "prerequisiteLessonIds": ["03-vector-spaces"],
+    "skill": {
+      "id": "skill-matrix-transformations",
+      "title": "Mátrixtranszformációk",
+      "description": "Mátrixok lineáris leképezésként való értelmezése és összetétele.",
+      "category": "linear-algebra"
+    },
+    "realWorldProblem": "A Mid/Side kódolás két bemeneti csatornából összeg- és különbségi csatornát képez.",
+    "intuition": [
+      "A mátrix oszlopai megmutatják, hová kerülnek a bázisvektorok.",
+      "A mátrixszorzás transzformációk egymás utáni alkalmazása."
+    ],
+    "formalModel": "y = Ax,   (BA)x = B(Ax)",
+    "applications": [
+      "Mid/Side és többcsatornás keverés.",
+      "Koordináta-forgatás mechanikai modellekben."
+    ],
+    "checkpoint": {
+      "prompt": "Mit reprezentálnak A mátrix oszlopai geometriailag?",
+      "options": [
+        { "id": "basisimages", "label": "A bázisvektorok képeit" },
+        { "id": "roots", "label": "A karakterisztikus polinom gyökeit" },
+        { "id": "averages", "label": "A sorok átlagát" }
+      ],
+      "answer": "basisimages",
+      "hint": "Aeᵢ éppen A i-edik oszlopa."
+    }
+  },
+  {
+    "id": "03-linear-systems-determinants",
+    "moduleId": "03-complex-linear-algebra",
+    "order": 4,
+    "title": "Lineáris egyenletrendszerek és determináns",
+    "summary": "Gauss-elimináció, rang, invertálhatóság és megoldások szerkezete.",
+    "estimatedMinutes": 50,
+    "prerequisiteLessonIds": ["03-matrices-transformations"],
+    "skill": {
+      "id": "skill-linear-systems",
+      "title": "Lineáris rendszerek",
+      "description": "Lineáris egyenletrendszerek megoldása és egyértelműségének vizsgálata.",
+      "category": "linear-algebra"
+    },
+    "realWorldProblem": "Ismert mikrofonmérésekből forrásjeleket vagy áramköri csomóponti feszültségeket kell visszanyerni.",
+    "intuition": [
+      "A sorredukció az egyenleteket ekvivalens, könnyebben olvasható alakra hozza.",
+      "A nulla determináns térfogat-összeomlást és nem invertálható leképezést jelez."
+    ],
+    "formalModel": "Ax=b,   det(A)≠0 ⇒ x=A⁻¹b",
+    "applications": [
+      "Forrásszétválasztás ismert keverési mátrixból.",
+      "Csomóponti analízis elektromos hálózatban."
+    ],
+    "checkpoint": {
+      "prompt": "Mit garantál négyzetes A esetén det(A)≠0?",
+      "options": [
+        { "id": "unique", "label": "Minden b-hez egyértelmű megoldást" },
+        { "id": "none", "label": "A megoldás hiányát" },
+        { "id": "orthogonal", "label": "A oszlopainak egységnyi hosszát" }
+      ],
+      "answer": "unique",
+      "hint": "Nem nulla determináns esetén A invertálható."
+    }
+  },
+  {
+    "id": "03-basis-orthogonality",
+    "moduleId": "03-complex-linear-algebra",
+    "order": 5,
+    "title": "Bázisváltás, ortogonalitás és projekció",
+    "summary": "Ugyanaz a vektor más koordinátákban, merőleges felbontás és legjobb alteres közelítés.",
+    "estimatedMinutes": 50,
+    "prerequisiteLessonIds": ["03-linear-systems-determinants"],
+    "skill": {
+      "id": "skill-orthogonal-projection",
+      "title": "Ortogonalitás és projekció",
+      "description": "Ortogonális bázisok, koordinátaváltás és vetítés használata.",
+      "category": "linear-algebra"
+    },
+    "realWorldProblem": "Egy jelet komponensekre szeretnénk bontani úgy, hogy a maradék hiba merőleges legyen a választott modellre.",
+    "intuition": [
+      "A bázisváltás a vektort nem, csak a koordinátáit változtatja meg.",
+      "Az ortogonális projekció a legközelebbi pontot adja egy altérben."
+    ],
+    "formalModel": "projᵤ(v) = (v·u)/(u·u) u",
+    "applications": [
+      "Jelkomponens kinyerése korrelációval.",
+      "Erő felbontása párhuzamos és merőleges komponensre."
+    ],
+    "checkpoint": {
+      "prompt": "Mi jellemzi az ortogonális projekció hibavektorát?",
+      "options": [
+        { "id": "perpendicular", "label": "Merőleges a vetítési altérre" },
+        { "id": "zero", "label": "Mindig nulla" },
+        { "id": "parallel", "label": "Mindig párhuzamos az eredeti vektorral" }
+      ],
+      "answer": "perpendicular",
+      "hint": "A legközelebbi pontba vezető eltérés normális az altérre."
+    }
+  },
+  {
+    "id": "03-eigenvalues",
+    "moduleId": "03-complex-linear-algebra",
+    "order": 6,
+    "title": "Sajátértékek és sajátvektorok",
+    "summary": "A transzformáció természetes irányai, módusok és ismételt alkalmazás hosszú távú viselkedése.",
+    "estimatedMinutes": 50,
+    "prerequisiteLessonIds": ["03-basis-orthogonality"],
+    "skill": {
+      "id": "skill-eigen",
+      "title": "Sajátértékek",
+      "description": "Sajátértékek és sajátvektorok dinamikai és geometriai értelmezése.",
+      "category": "linear-algebra"
+    },
+    "realWorldProblem": "Egy csatolt rezonátorrendszer természetes rezgésmódjai speciális alakjuk megtartásával fejlődnek.",
+    "intuition": [
+      "Sajátvektor irányát a transzformáció nem forgatja el, csak skálázza.",
+      "A sajátérték mondja meg az adott módus erősödését, csillapodását vagy fázisát."
+    ],
+    "formalModel": "Av = λv",
+    "applications": [
+      "Mechanikai normálmódusok és rezonanciák.",
+      "Állapottér-stabilitás és feedback delay network módusai."
+    ],
+    "checkpoint": {
+      "prompt": "Mit tesz A egy sajátvektorával?",
+      "options": [
+        { "id": "scale", "label": "Ugyanabban az irányban skálázza" },
+        { "id": "zero", "label": "Mindig nullára viszi" },
+        { "id": "random", "label": "Véletlen irányba forgatja" }
+      ],
+      "answer": "scale",
+      "hint": "A definíció Av=λv."
+    }
+  },
+  {
+    "id": "03-least-squares-pca",
+    "moduleId": "03-complex-linear-algebra",
+    "order": 7,
+    "title": "Legkisebb négyzetek és PCA",
+    "summary": "Túlhatározott rendszerek optimális közelítése és adatok fő irányainak feltárása.",
+    "estimatedMinutes": 55,
+    "prerequisiteLessonIds": ["03-eigenvalues"],
+    "skill": {
+      "id": "skill-least-squares-pca",
+      "title": "Legkisebb négyzetek és PCA",
+      "description": "Négyzetes hibájú modellillesztés és főkomponens-analízis lineáris algebrai értelmezése.",
+      "category": "linear-algebra"
+    },
+    "realWorldProblem": "Zajos mérésekből EQ-görbét illesztünk, vagy sok audió feature információját kevesebb tengelyre tömörítjük.",
+    "intuition": [
+      "Legkisebb négyzeteknél a maradék merőleges a modell oszlopterére.",
+      "PCA a legnagyobb varianciájú ortogonális irányokat keresi."
+    ],
+    "formalModel": "x̂ = argminₓ ‖Ax−b‖²,   AᵀAx̂=Aᵀb",
+    "applications": [
+      "Frekvenciaválasz és paramétermodell illesztése.",
+      "Audió feature-ök dimenziócsökkentése PCA-val."
+    ],
+    "checkpoint": {
+      "prompt": "Mire merőleges a legkisebb négyzetes megoldás maradékvektora?",
+      "options": [
+        { "id": "columns", "label": "A modellmátrix oszlopterére" },
+        { "id": "b", "label": "Mindig a mérési vektorra" },
+        { "id": "x", "label": "Mindig a paramétervektorra" }
+      ],
+      "answer": "columns",
+      "hint": "A normálegyenlet Aᵀ(Ax̂−b)=0."
+    }
+  }
+]

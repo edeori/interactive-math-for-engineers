@@ -1,0 +1,8 @@
+{
+  "id": "exponential-functions",
+  "title": "Exponenciális függvények",
+  "description": "Exponenciális növekedés és csökkenés felismerése és számítása.",
+  "prerequisites": ["functions-basics"],
+  "category": "foundation",
+  "masteryThreshold": 0.75
+}

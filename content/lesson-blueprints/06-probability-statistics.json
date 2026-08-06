@@ -1,0 +1,262 @@
+[
+  {
+    "id": "06-descriptive-distributions",
+    "moduleId": "06-probability-statistics",
+    "order": 1,
+    "title": "Leíró statisztika és eloszlások",
+    "summary": "Középérték, medián, kvantilisek, szóródás, hisztogram és eloszlásfüggvény.",
+    "estimatedMinutes": 45,
+    "prerequisiteLessonIds": ["00-sums-units", "02-definite-accumulation"],
+    "skill": {
+      "id": "skill-descriptive-distributions",
+      "title": "Leíró statisztika",
+      "description": "Adathalmazok középpontjának, szóródásának és eloszlásalakjának jellemzése.",
+      "category": "statistics"
+    },
+    "realWorldProblem": "Több ezer nyers és feldolgozott audió frame szintjét egyetlen átlag nem írja le megfelelően.",
+    "intuition": [
+      "A középérték a tipikus helyet, a szóródás a változatosságot jellemzi.",
+      "Az eloszlás alakja megmutatja az aszimmetriát, több módust és ritka szélsőségeket."
+    ],
+    "formalModel": "x̄=1/n Σxᵢ,   s²=1/(n−1)Σ(xᵢ−x̄)²",
+    "applications": [
+      "Raw/wet feature-eloszlások és loudness-statisztikák.",
+      "Mérési sorozat stabilitásának és outliereinek feltárása."
+    ],
+    "checkpoint": {
+      "prompt": "Melyik középérték robusztusabb néhány extrém outlierrel szemben?",
+      "options": [
+        { "id": "median", "label": "A medián" },
+        { "id": "mean", "label": "A számtani átlag" },
+        { "id": "variance", "label": "A variancia" }
+      ],
+      "answer": "median",
+      "hint": "A medián csak a rendezett sorrend közepétől függ."
+    }
+  },
+  {
+    "id": "06-expectation-variance-covariance",
+    "moduleId": "06-probability-statistics",
+    "order": 2,
+    "title": "Várható érték, variancia és kovariancia",
+    "summary": "Véletlen változók momentumai, együttmozgás és korreláció.",
+    "estimatedMinutes": 50,
+    "prerequisiteLessonIds": ["06-descriptive-distributions"],
+    "skill": {
+      "id": "skill-moments-covariance",
+      "title": "Momentumok és kovariancia",
+      "description": "Várható érték, variancia, kovariancia és korreláció értelmezése.",
+      "category": "statistics"
+    },
+    "realWorldProblem": "Tudni akarjuk, együtt változik-e két audió feature, és mekkora tipikus bizonytalanság várható zajos mérésnél.",
+    "intuition": [
+      "A várható érték sok ismétlés hosszú távú középpontja.",
+      "A kovariancia előjele együtt- vagy ellentétes mozgást jelez, de nem bizonyít okságot."
+    ],
+    "formalModel": "Var(X)=E[(X−E[X])²],   Cov(X,Y)=E[(X−μX)(Y−μY)]",
+    "applications": [
+      "Zajteljesítmény és jelvariancia.",
+      "Audió feature-ök korrelációja és kovarianciamátrixa."
+    ],
+    "checkpoint": {
+      "prompt": "Mit jelent Cov(X,Y)>0?",
+      "options": [
+        {
+          "id": "together",
+          "label": "X és Y átlag feletti eltérései hajlamosak együtt jelentkezni"
+        },
+        { "id": "cause", "label": "X biztosan okozza Y-t" },
+        { "id": "independent", "label": "X és Y biztosan függetlenek" }
+      ],
+      "answer": "together",
+      "hint": "A kovariancia együttmozgást, nem oksági irányt mér."
+    }
+  },
+  {
+    "id": "06-conditional-bayes",
+    "moduleId": "06-probability-statistics",
+    "order": 3,
+    "title": "Feltételes valószínűség és Bayes-tétel",
+    "summary": "Információfrissítés, prior, likelihood és posterior mérnöki döntésekben.",
+    "estimatedMinutes": 50,
+    "prerequisiteLessonIds": ["06-expectation-variance-covariance"],
+    "skill": {
+      "id": "skill-conditional-bayes",
+      "title": "Feltételes valószínűség",
+      "description": "Feltételes események és Bayes-féle valószínűségfrissítés alkalmazása.",
+      "category": "statistics"
+    },
+    "realWorldProblem": "Egy click-detektor riasztása után azt akarjuk tudni, valóban hibás-e a hang, figyelembe véve a hibák ritkaságát is.",
+    "intuition": [
+      "A feltételes valószínűség a rendelkezésre álló információra szűkíti a mintateret.",
+      "Bayes a megfigyelés valószínűségét és az alaprátát együtt használja."
+    ],
+    "formalModel": "P(A|B)=P(B|A)P(A)/P(B)",
+    "applications": [
+      "Ritka mouth-click esemény posterior valószínűsége.",
+      "Diagnosztikai teszt és hibadetektor alaprátahatása."
+    ],
+    "checkpoint": {
+      "prompt": "Miért fontos a prior egy ritka esemény detektálásánál?",
+      "options": [
+        {
+          "id": "base",
+          "label": "Mert az alacsony alapráta sok riasztást hamis pozitívvá tehet"
+        },
+        {
+          "id": "ignore",
+          "label": "Mert a prior mindig felülír minden adatot"
+        },
+        { "id": "unit", "label": "Mert megadja a jel mértékegységét" }
+      ],
+      "answer": "base",
+      "hint": "A posterior nemcsak a detektor érzékenységétől, hanem az esemény gyakoriságától is függ."
+    }
+  },
+  {
+    "id": "06-sampling-confidence",
+    "moduleId": "06-probability-statistics",
+    "order": 4,
+    "title": "Mintavétel, becslés és konfidenciaintervallum",
+    "summary": "Mintavételi eloszlás, standard hiba, torzítás és bizonytalansági intervallum.",
+    "estimatedMinutes": 50,
+    "prerequisiteLessonIds": ["06-conditional-bayes"],
+    "skill": {
+      "id": "skill-confidence-intervals",
+      "title": "Becslés és konfidenciaintervallum",
+      "description": "Mintából számolt becslések bizonytalanságának és intervallumainak értelmezése.",
+      "category": "statistics"
+    },
+    "realWorldProblem": "Néhány tesztfájlból becsüljük egy algoritmus átlagos javulását, de jelezni kell, mennyire bizonytalan az eredmény.",
+    "intuition": [
+      "Más minták más becslést adnának; ezt a mintavételi ingadozást standard hiba méri.",
+      "A konfidenciaintervallum egy eljárás hosszú távú lefedési tulajdonsága."
+    ],
+    "formalModel": "SE(x̄)=s/√n,   CI≈x̄±z·SE",
+    "applications": [
+      "Algoritmusminőség átlagának bizonytalansága.",
+      "Mérőeszköz ismételhetősége és bootstrap intervallum."
+    ],
+    "checkpoint": {
+      "prompt": "Mi történik tipikusan a standard hibával, ha a mintaméret négyszeresére nő?",
+      "options": [
+        { "id": "half", "label": "Körülbelül a felére csökken" },
+        { "id": "quarter", "label": "A negyedére csökken" },
+        { "id": "double", "label": "Megkétszereződik" }
+      ],
+      "answer": "half",
+      "hint": "A standard hiba 1/√n szerint skálázódik."
+    }
+  },
+  {
+    "id": "06-hypothesis-ab",
+    "moduleId": "06-probability-statistics",
+    "order": 5,
+    "title": "Hipotézisvizsgálat és A/B teszt",
+    "summary": "Nullhipotézis, p-érték, hatásméret, erő és többszörös összehasonlítás.",
+    "estimatedMinutes": 55,
+    "prerequisiteLessonIds": ["06-sampling-confidence"],
+    "skill": {
+      "id": "skill-hypothesis-testing",
+      "title": "Hipotézisvizsgálat",
+      "description": "Statisztikai tesztek, p-értékek, hatásméretek és teszterő helyes értelmezése.",
+      "category": "statistics"
+    },
+    "realWorldProblem": "El kell dönteni, hogy egy új algoritmus mérhető vagy hallható javulása több-e véletlen mintavételi ingadozásnál.",
+    "intuition": [
+      "A p-érték azt méri, mennyire szélsőséges az adat a nullhipotézis mellett.",
+      "A statisztikai szignifikancia nem azonos a gyakorlati jelentőséggel."
+    ],
+    "formalModel": "p = P(T legalább ilyen szélsőséges | H₀)",
+    "applications": [
+      "Páros algoritmus-összehasonlítás ugyanazon fájlokon.",
+      "Vak hallgatási A/B teszt és többszörös próbák korrekciója."
+    ],
+    "checkpoint": {
+      "prompt": "Mit NEM jelent a p=0,03?",
+      "options": [
+        {
+          "id": "posterior",
+          "label": "Azt, hogy H₀ igazságának valószínűsége 3%"
+        },
+        { "id": "data", "label": "Az adat ritka lenne H₀ mellett" },
+        {
+          "id": "threshold",
+          "label": "Egy előre választott 5%-os szint alatt van"
+        }
+      ],
+      "answer": "posterior",
+      "hint": "A p-érték P(adat|H₀), nem P(H₀|adat)."
+    }
+  },
+  {
+    "id": "06-regression-outliers",
+    "moduleId": "06-probability-statistics",
+    "order": 6,
+    "title": "Korreláció, regresszió és outlierek",
+    "summary": "Lineáris kapcsolat, reziduumok, modellfeltételek, robusztusság és idősoros függés.",
+    "estimatedMinutes": 55,
+    "prerequisiteLessonIds": ["06-hypothesis-ab", "03-least-squares-pca"],
+    "skill": {
+      "id": "skill-regression",
+      "title": "Regresszió",
+      "description": "Regressziós kapcsolatok illesztése, diagnosztikája és robusztus értelmezése.",
+      "category": "statistics"
+    },
+    "realWorldProblem": "Mérési feature-ből paramétert becslünk, miközben outlierek, heteroszkedaszticitás és időbeli korreláció torzíthat.",
+    "intuition": [
+      "A regresszió feltételes átlagot modellez, nem automatikusan oksági kapcsolatot.",
+      "A reziduumok mintázata jelzi, ha a modell valamit nem magyaráz meg."
+    ],
+    "formalModel": "yᵢ=β₀+β₁xᵢ+εᵢ",
+    "applications": [
+      "Envelope-időállandó becslése mérésekből.",
+      "Raw/wet feature-kapcsolat és idősoros reziduumok."
+    ],
+    "checkpoint": {
+      "prompt": "Mit jelezhet görbült mintázat a lineáris regresszió reziduumábráján?",
+      "options": [
+        { "id": "nonlinear", "label": "Hiányzó nemlineáris kapcsolatot" },
+        { "id": "perfect", "label": "Tökéletes lineáris modellt" },
+        { "id": "causal", "label": "Biztos oksági kapcsolatot" }
+      ],
+      "answer": "nonlinear",
+      "hint": "Egy jó modell után a reziduumokban nem marad rendszeres alakzat."
+    }
+  },
+  {
+    "id": "06-classification-multivariate",
+    "moduleId": "06-probability-statistics",
+    "order": 7,
+    "title": "Osztályozási metrikák, bootstrap és többváltozós adatok",
+    "summary": "Precision, recall, ROC, küszöbválasztás, újramintavétel, PCA és klaszterezési alapok.",
+    "estimatedMinutes": 60,
+    "prerequisiteLessonIds": ["06-regression-outliers", "03-least-squares-pca"],
+    "skill": {
+      "id": "skill-classification-metrics",
+      "title": "Osztályozásértékelés",
+      "description": "Detektorok küszöbfüggő metrikáinak, bootstrap bizonytalanságának és többváltozós szerkezetének elemzése.",
+      "category": "statistics"
+    },
+    "realWorldProblem": "Egy breath- vagy click-detektor küszöbe meghatározza, mennyi eseményt talál meg és mennyi téves riasztást ad.",
+    "intuition": [
+      "A precision a pozitív riasztások tisztaságát, a recall a valódi események lefedését méri.",
+      "A ROC több küszöbön mutatja a találati és hamis pozitív arány kompromisszumát."
+    ],
+    "formalModel": "precision=TP/(TP+FP),   recall=TP/(TP+FN)",
+    "applications": [
+      "Mouth-click és breath detector küszöboptimalizálása.",
+      "Bootstrap metrika-intervallum, PCA és feature-klaszterek."
+    ],
+    "checkpoint": {
+      "prompt": "Melyik metrika nő, ha a detektor a valódi események nagyobb részét megtalálja?",
+      "options": [
+        { "id": "recall", "label": "Recall" },
+        { "id": "precision", "label": "Precision szükségképpen" },
+        { "id": "variance", "label": "Feature-variancia" }
+      ],
+      "answer": "recall",
+      "hint": "A recall nevezőjében az összes valódi pozitív esemény szerepel."
+    }
+  }
+]

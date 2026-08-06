@@ -1,0 +1,8 @@
+{
+  "id": "functions-basics",
+  "title": "Függvények alapjai",
+  "description": "Bemenetek, kimenetek és grafikonok értelmezése.",
+  "prerequisites": [],
+  "category": "foundation",
+  "masteryThreshold": 0.75
+}

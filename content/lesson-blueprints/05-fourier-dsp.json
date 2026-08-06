@@ -1,0 +1,313 @@
+[
+  {
+    "id": "05-sinusoids-fourier-series",
+    "moduleId": "05-fourier-dsp",
+    "order": 1,
+    "title": "Szinuszos felbontás, ortogonalitás és Fourier-sor",
+    "summary": "Periodikus jelek harmonikus komponensei és a bázisfüggvények együtthatói.",
+    "estimatedMinutes": 55,
+    "prerequisiteLessonIds": [
+      "00-trigonometry",
+      "03-basis-orthogonality",
+      "02-audio-energy-convolution"
+    ],
+    "skill": {
+      "id": "skill-fourier-series",
+      "title": "Fourier-sor",
+      "description": "Periodikus jelek ortogonális szinuszos bázison történő felbontása.",
+      "category": "dsp"
+    },
+    "realWorldProblem": "Egy komplex periodikus hang hullámalakját harmonikus szinuszok összegével szeretnénk leírni.",
+    "intuition": [
+      "Az ortogonális komponensek egymástól függetlenül mérhetők projekcióval.",
+      "Több harmonikus hozzáadásával egyre finomabb hullámalak állítható elő."
+    ],
+    "formalModel": "x(t)=a₀+Σₖ[aₖcos(kω₀t)+bₖsin(kω₀t)]",
+    "applications": [
+      "Fűrész- és négyszögjel harmonikus szerkezete.",
+      "Rezgési módusok és periodikus gerjesztések felbontása."
+    ],
+    "checkpoint": {
+      "prompt": "Miért számolhatók a Fourier-együtthatók külön projekciókkal?",
+      "options": [
+        { "id": "orthogonal", "label": "Mert a bázisfüggvények ortogonálisak" },
+        { "id": "positive", "label": "Mert minden jel pozitív" },
+        { "id": "finite", "label": "Mert mindig csak egy harmonikus létezik" }
+      ],
+      "answer": "orthogonal",
+      "hint": "Az eltérő harmonikusok belső szorzata egy perióduson nulla."
+    }
+  },
+  {
+    "id": "05-fourier-transform",
+    "moduleId": "05-fourier-dsp",
+    "order": 2,
+    "title": "Fourier-transzformáció és spektrum",
+    "summary": "Nem periodikus jelek folytonos frekvenciareprezentációja, amplitúdó és fázis.",
+    "estimatedMinutes": 55,
+    "prerequisiteLessonIds": [
+      "05-sinusoids-fourier-series",
+      "02-numerical-improper"
+    ],
+    "skill": {
+      "id": "skill-fourier-transform",
+      "title": "Fourier-transzformáció",
+      "description": "Idő- és frekvenciatartomány közötti folytonos transzformáció értelmezése.",
+      "category": "dsp"
+    },
+    "realWorldProblem": "Egy egyszeri tranziens vagy véges felvétel nem periodikus, mégis tudni akarjuk, mely frekvenciákat tartalmazza.",
+    "intuition": [
+      "A transzformáció minden frekvencián megméri a jel komplex szinuszhoz való hasonlóságát.",
+      "Az időbeli lokalizáltság és a frekvenciabeli lokalizáltság között kompromisszum van."
+    ],
+    "formalModel": "X(ω)=∫₋∞∞ x(t)e^(−jωt)dt",
+    "applications": [
+      "Impulzus és zajkitörés spektruma.",
+      "Frekvenciaválasz mérése impulzusválaszból."
+    ],
+    "checkpoint": {
+      "prompt": "Mit tartalmaz általában a komplex X(ω)?",
+      "options": [
+        { "id": "both", "label": "Amplitúdó- és fázisinformációt" },
+        { "id": "amplitude", "label": "Csak időtartamot" },
+        { "id": "samples", "label": "Csak a minták számát" }
+      ],
+      "answer": "both",
+      "hint": "A komplex szám nagysága és argumentuma két külön információt hordoz."
+    }
+  },
+  {
+    "id": "05-dft-fft-windows",
+    "moduleId": "05-fourier-dsp",
+    "order": 3,
+    "title": "DFT, FFT, ablakok és spektrális szivárgás",
+    "summary": "Véges mintablokkok diszkrét spektruma, binrács, felbontás és ablakválasztás.",
+    "estimatedMinutes": 60,
+    "prerequisiteLessonIds": ["05-fourier-transform", "00-sums-units"],
+    "skill": {
+      "id": "skill-dft-fft",
+      "title": "DFT és FFT",
+      "description": "A DFT mintavételi és ablakolási hatásainak, valamint az FFT szerepének elemzése.",
+      "category": "dsp"
+    },
+    "realWorldProblem": "Egy analizátor véges blokkból számol spektrumot, és a nem binre eső hang energiája több frekvenciára szétterül.",
+    "intuition": [
+      "A DFT a véges blokk periodikus ismétlését feltételezi.",
+      "Az ablak csökkenti a blokkhatár ugrását, de szélesíti a spektrális csúcsot."
+    ],
+    "formalModel": "X[k]=Σₙ₌₀ᴺ⁻¹ x[n]e^(−j2πkn/N)",
+    "applications": [
+      "Spektrumanalizátor és STFT keretezés.",
+      "Hann-, rectangular- és más ablakok felbontási kompromisszuma."
+    ],
+    "checkpoint": {
+      "prompt": "Mi az FFT?",
+      "options": [
+        {
+          "id": "algorithm",
+          "label": "A DFT hatékony kiszámítására szolgáló algoritmuscsalád"
+        },
+        {
+          "id": "different",
+          "label": "A DFT-től független fizikai transzformáció"
+        },
+        { "id": "filter", "label": "Egy rögzített aluláteresztő szűrő" }
+      ],
+      "answer": "algorithm",
+      "hint": "Az eredmény ugyanaz a DFT, csak a számítás szervezése gyorsabb."
+    }
+  },
+  {
+    "id": "05-convolution-correlation",
+    "moduleId": "05-fourier-dsp",
+    "order": 4,
+    "title": "Konvolúció, korreláció és impulzusválasz",
+    "summary": "LTI rendszerek időtartományi működése, hasonlóság és késleltetésbecslés.",
+    "estimatedMinutes": 55,
+    "prerequisiteLessonIds": [
+      "05-fourier-transform",
+      "02-audio-energy-convolution"
+    ],
+    "skill": {
+      "id": "skill-convolution-correlation",
+      "title": "Konvolúció és korreláció",
+      "description": "Diszkrét konvolúció, korreláció, impulzusválasz és transzferfüggvény összekapcsolása.",
+      "category": "dsp"
+    },
+    "realWorldProblem": "Egy terem válaszát rá akarjuk alkalmazni egy száraz jelre, vagy két mikrofon közti késést szeretnénk megmérni.",
+    "intuition": [
+      "Konvolúcióban a rendszer minden bemeneti mintára egy eltolt impulzusválasszal reagál.",
+      "Korreláció eltolt hasonlóságot mér és a késésnél csúcsot adhat."
+    ],
+    "formalModel": "y[n]=Σₖx[k]h[n−k],   rxy[m]=Σₙx[n]y[n+m]",
+    "applications": [
+      "Konvolúciós zengetés és FIR szűrés.",
+      "Késésbecslés, hangmagasság és eseményegyezés korrelációval."
+    ],
+    "checkpoint": {
+      "prompt": "Mit határoz meg teljesen egy LTI rendszer esetén az impulzusválasz?",
+      "options": [
+        { "id": "all", "label": "A rendszer válaszát bármely bemenetre" },
+        { "id": "onlyimpulse", "label": "Csak egyetlen impulzus kimenetét" },
+        {
+          "id": "nonlinear",
+          "label": "A rendszer minden nemlineáris torzítását"
+        }
+      ],
+      "answer": "all",
+      "hint": "Minden jel impulzusok súlyozott összegeként írható fel."
+    }
+  },
+  {
+    "id": "05-sampling-aliasing",
+    "moduleId": "05-fourier-dsp",
+    "order": 5,
+    "title": "Mintavételezés és aliasing",
+    "summary": "Nyquist-frekvencia, spektrumismétlődés, rekonstrukció és antialias szűrés.",
+    "estimatedMinutes": 55,
+    "prerequisiteLessonIds": ["05-dft-fft-windows"],
+    "skill": {
+      "id": "skill-sampling-aliasing",
+      "title": "Mintavételezés",
+      "description": "Mintavételezett jelek spektrumismétlődésének és aliasingjának elemzése.",
+      "category": "dsp"
+    },
+    "realWorldProblem": "Egy nemlineáris plugin új felharmonikusai a Nyquist-frekvencia fölött visszahajolnak a hallható tartományba.",
+    "intuition": [
+      "Mintavételezés után a folytonos spektrum a mintavételi frekvencia egész többszörösein ismétlődik.",
+      "Az egymásra csúszó ismétlődésekből az eredeti frekvencia nem állítható vissza."
+    ],
+    "formalModel": "fNyquist = fₛ/2,   f_alias = |f − kfₛ|",
+    "applications": [
+      "ADC antialias szűrő és DAC rekonstrukció.",
+      "Oversampling waveshaper és torzító plugin esetén."
+    ],
+    "checkpoint": {
+      "prompt": "Miért nem távolítható el tökéletesen utólag az aliasing?",
+      "options": [
+        {
+          "id": "overlap",
+          "label": "Mert különböző eredeti frekvenciák ugyanarra a digitális frekvenciára kerülhetnek"
+        },
+        { "id": "amplitude", "label": "Mert minden minta amplitúdója nulla" },
+        { "id": "phase", "label": "Mert a digitális jelnek nincs fázisa" }
+      ],
+      "answer": "overlap",
+      "hint": "A leképezés nem egy-egyértelmű, információ vész el."
+    }
+  },
+  {
+    "id": "05-z-transform-poles",
+    "moduleId": "05-fourier-dsp",
+    "order": 6,
+    "title": "z-transzformáció, pólusok és zérusok",
+    "summary": "Diszkrét rendszerek komplex frekvenciasíkja, konvergenciatartomány és átviteli függvény.",
+    "estimatedMinutes": 60,
+    "prerequisiteLessonIds": ["05-sampling-aliasing", "03-complex-euler"],
+    "skill": {
+      "id": "skill-z-transform",
+      "title": "z-transzformáció",
+      "description": "Diszkrét jelek és rendszerek z-tartományi reprezentációjának használata.",
+      "category": "dsp"
+    },
+    "realWorldProblem": "Egy rekurzív szűrő különbségegyenletéből szeretnénk közvetlenül leolvasni a frekvenciaválaszt és stabilitást.",
+    "intuition": [
+      "A z-transzformáció a különböző exponenciális módusokra adott választ kódolja.",
+      "Pólus közelében nagy, zérus közelében kicsi a rendszer válasza."
+    ],
+    "formalModel": "H(z)=Y(z)/X(z)=B(z)/A(z)",
+    "applications": [
+      "Különbségegyenletből átviteli függvény.",
+      "Pólus-zérus diagram és frekvenciaválasz az egységkörön."
+    ],
+    "checkpoint": {
+      "prompt": "Hol értékeljük H(z)-t a frekvenciaválaszhoz?",
+      "options": [
+        { "id": "circle", "label": "Az egységkörön: z=e^(jω)" },
+        { "id": "zero", "label": "Csak z=0-ban" },
+        { "id": "real", "label": "Csak a pozitív valós tengelyen" }
+      ],
+      "answer": "circle",
+      "hint": "A diszkrét szinuszos módusok egységnyi sugarú komplex exponenciálisok."
+    }
+  },
+  {
+    "id": "05-fir-filters",
+    "moduleId": "05-fourier-dsp",
+    "order": 7,
+    "title": "FIR szűrők",
+    "summary": "Véges impulzusválasz, lineáris fázis, ablakos és optimalizált tervezés.",
+    "estimatedMinutes": 55,
+    "prerequisiteLessonIds": [
+      "05-convolution-correlation",
+      "05-z-transform-poles"
+    ],
+    "skill": {
+      "id": "skill-fir",
+      "title": "FIR szűrők",
+      "description": "FIR szűrők idő- és frekvenciatartományi tervezése és implementálása.",
+      "category": "dsp"
+    },
+    "realWorldProblem": "Olyan EQ-t vagy crossover szűrőt akarunk, amely garantáltan stabil és akár pontosan lineáris fázisú.",
+    "intuition": [
+      "Az FIR kimenete véges számú bemeneti minta súlyozott összege.",
+      "Szimmetrikus együtthatók megfelelő feltételek mellett lineáris fázist adnak."
+    ],
+    "formalModel": "y[n]=Σₖ₌₀ᴹ bₖx[n−k]",
+    "applications": [
+      "Lineáris fázisú crossover és korrekciós EQ.",
+      "Mozgóátlag, fractional delay és konvolúciós kernel."
+    ],
+    "checkpoint": {
+      "prompt": "Miért BIBO-stabil minden véges együtthatójú FIR szűrő?",
+      "options": [
+        {
+          "id": "finite",
+          "label": "Mert impulzusválaszának abszolút összege véges"
+        },
+        {
+          "id": "feedback",
+          "label": "Mert erős pozitív visszacsatolást használ"
+        },
+        { "id": "poles", "label": "Mert pólusai az egységkörön kívül vannak" }
+      ],
+      "answer": "finite",
+      "hint": "Az impulzusválasz csak véges sok nem nulla tagból áll."
+    }
+  },
+  {
+    "id": "05-iir-phase-stability",
+    "moduleId": "05-fourier-dsp",
+    "order": 8,
+    "title": "IIR szűrők, fázis és stabilitás",
+    "summary": "Visszacsatolt szűrők, biquadok, póluselhelyezés, amplitúdó- és fázisválasz.",
+    "estimatedMinutes": 60,
+    "prerequisiteLessonIds": ["05-fir-filters", "04-state-space-stability"],
+    "skill": {
+      "id": "skill-iir-stability",
+      "title": "IIR szűrők és stabilitás",
+      "description": "Rekurzív digitális szűrők pólusainak, fázisának és stabilitásának elemzése.",
+      "category": "dsp"
+    },
+    "realWorldProblem": "Kevés együtthatóval meredek EQ-t akarunk, de a visszacsatolás miatt a stabilitást és a fázistolást is kontrollálni kell.",
+    "intuition": [
+      "Az IIR a korábbi kimeneteket is visszaforgatja, ezért impulzusválasza elvileg végtelen.",
+      "Diszkrét kauzális rendszer stabil, ha minden pólusa szigorúan az egységkörön belül van."
+    ],
+    "formalModel": "y[n]=Σbₖx[n−k]−Σaₖy[n−k],   |pᵢ|<1",
+    "applications": [
+      "Biquad EQ, crossover és rezonáns szűrő.",
+      "Minimum phase, group delay és tranziensviselkedés."
+    ],
+    "checkpoint": {
+      "prompt": "Hol kell lenniük egy kauzális IIR szűrő pólusainak a stabilitáshoz?",
+      "options": [
+        { "id": "inside", "label": "Szigorúan az egységkörön belül" },
+        { "id": "outside", "label": "Az egységkörön kívül" },
+        { "id": "origin", "label": "Mindnek pontosan az origóban" }
+      ],
+      "answer": "inside",
+      "hint": "Ekkor a pólusokhoz tartozó diszkrét módusok lecsengenek."
+    }
+  }
+]

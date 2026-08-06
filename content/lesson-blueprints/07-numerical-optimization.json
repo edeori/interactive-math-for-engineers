@@ -1,0 +1,246 @@
+[
+  {
+    "id": "07-floating-point-stability",
+    "moduleId": "07-numerical-optimization",
+    "order": 1,
+    "title": "Lebegőpontos számábrázolás és numerikus stabilitás",
+    "summary": "Kerekítés, pontosság, kondicionáltság, katasztrofális kivonás és stabil algoritmusok.",
+    "estimatedMinutes": 50,
+    "prerequisiteLessonIds": [
+      "00-powers-roots-scientific",
+      "01-numerical-differentiation"
+    ],
+    "skill": {
+      "id": "skill-floating-point",
+      "title": "Lebegőpontos stabilitás",
+      "description": "Lebegőpontos hibák, problémakondíció és algoritmikus stabilitás elemzése.",
+      "category": "numerical-methods"
+    },
+    "realWorldProblem": "Matematikailag ekvivalens DSP-képletek lebegőponton nagyon eltérő zajt és pontosságvesztést okozhatnak.",
+    "intuition": [
+      "A lebegőpontos számok véges pontosságú közelítések, relatív felbontással.",
+      "Közeli nagy számok kivonása eltörölheti a hasznos jelentős számjegyeket."
+    ],
+    "formalModel": "fl(x op y)=(x op y)(1+δ),   |δ|≲ε",
+    "applications": [
+      "Biquad implementáció kis frekvencián és denormálok.",
+      "Numerikus deriválás és rosszul kondicionált lineáris rendszerek."
+    ],
+    "checkpoint": {
+      "prompt": "Mi a katasztrofális kivonás?",
+      "options": [
+        {
+          "id": "digits",
+          "label": "Közeli számok kivonásakor a jelentős számjegyek elvesztése"
+        },
+        { "id": "overflow", "label": "Kizárólag pozitív túlcsordulás" },
+        { "id": "integer", "label": "Egész számok pontos összeadása" }
+      ],
+      "answer": "digits",
+      "hint": "A nagy közös vezető számjegyek kiesnek, a kerekítési hiba megmarad."
+    }
+  },
+  {
+    "id": "07-root-finding-newton",
+    "moduleId": "07-numerical-optimization",
+    "order": 2,
+    "title": "Gyökkeresés és Newton-módszer",
+    "summary": "Felezőmódszer, fixpont-iteráció, Newton-lépés, konvergencia és biztonságos hibrid megoldók.",
+    "estimatedMinutes": 50,
+    "prerequisiteLessonIds": [
+      "07-floating-point-stability",
+      "01-derivative-rate"
+    ],
+    "skill": {
+      "id": "skill-root-finding",
+      "title": "Gyökkeresés",
+      "description": "Nemlineáris egyenletek numerikus megoldása és a konvergencia ellenőrzése.",
+      "category": "numerical-methods"
+    },
+    "realWorldProblem": "Nemlineáris áramköri egyenletből vagy kalibrációs feltételből olyan paramétert keresünk, ahol a maradék nulla.",
+    "intuition": [
+      "A felezés lassú, de előjelváltó intervallumban megbízható.",
+      "Newton az érintő gyökéhez lép, ezért gyors lehet, de rossz kezdőpontból eltévedhet."
+    ],
+    "formalModel": "xₙ₊₁=xₙ−f(xₙ)/f′(xₙ)",
+    "applications": [
+      "Diódás nemlinearitás implicit mintánkénti megoldása.",
+      "Szűrőparaméter kalibrálása célfrekvenciára."
+    ],
+    "checkpoint": {
+      "prompt": "Mi a felezőmódszer fő előnye Newtonhoz képest?",
+      "options": [
+        {
+          "id": "robust",
+          "label": "Előjelváltó intervallumban garantáltan szűkíti a gyök helyét"
+        },
+        { "id": "derivative", "label": "Mindig négyzetesen konvergál" },
+        { "id": "complex", "label": "Csak komplex gyököket talál" }
+      ],
+      "answer": "robust",
+      "hint": "A folytonosság és az ellentétes végponti előjelek adják a garanciát."
+    }
+  },
+  {
+    "id": "07-numerical-calculus",
+    "moduleId": "07-numerical-optimization",
+    "order": 3,
+    "title": "Numerikus differenciálás és integrálás hibaanalízise",
+    "summary": "Csonkolási és kerekítési hiba, extrapoláció, adaptív kvadratúra és konvergenciarend.",
+    "estimatedMinutes": 50,
+    "prerequisiteLessonIds": [
+      "07-root-finding-newton",
+      "02-numerical-improper"
+    ],
+    "skill": {
+      "id": "skill-numerical-calculus-errors",
+      "title": "Numerikus analízishibák",
+      "description": "Numerikus deriváló és integráló módszerek hibájának és konvergenciarendjének becslése.",
+      "category": "numerical-methods"
+    },
+    "realWorldProblem": "Meg kell választani a mérési lépésközt és integrációs rácsot úgy, hogy a kívánt pontosság felesleges számítás nélkül teljesüljön.",
+    "intuition": [
+      "A konvergenciarend azt írja le, milyen gyorsan csökken a csonkolási hiba a lépésközzel.",
+      "Adaptív módszer ott sűríti a mintákat, ahol a függvény nehezebben közelíthető."
+    ],
+    "formalModel": "E(h)≈Chᵖ,   E(h/2)≈E(h)/2ᵖ",
+    "applications": [
+      "Finite difference lépésköz automatikus megválasztása.",
+      "Adaptív integrálás éles rezonanciacsúcs körül."
+    ],
+    "checkpoint": {
+      "prompt": "Mit jelent, hogy egy módszer másodrendű?",
+      "options": [
+        {
+          "id": "quarter",
+          "label": "h felezése az aszimptotikus hibát körülbelül negyedeli"
+        },
+        { "id": "half", "label": "h felezése mindig felezi a futási időt" },
+        { "id": "two", "label": "Csak két mintát használhat" }
+      ],
+      "answer": "quarter",
+      "hint": "Másodrendnél E(h) arányos h²-tel."
+    }
+  },
+  {
+    "id": "07-interpolation-linear-solvers",
+    "moduleId": "07-numerical-optimization",
+    "order": 4,
+    "title": "Interpoláció és lineáris rendszerek numerikus megoldása",
+    "summary": "Polinom- és spline-interpoláció, LU/QR módszer, iteratív solverk és kondicionáltság.",
+    "estimatedMinutes": 55,
+    "prerequisiteLessonIds": [
+      "07-numerical-calculus",
+      "03-linear-systems-determinants"
+    ],
+    "skill": {
+      "id": "skill-interpolation-solvers",
+      "title": "Interpoláció és lineáris solverk",
+      "description": "Minták közötti becslés és lineáris rendszerek stabil numerikus megoldása.",
+      "category": "numerical-methods"
+    },
+    "realWorldProblem": "Lookup table mintái között simán kell becsülni, nagy egyenletrendszert pedig explicit inverz képzése nélkül kell megoldani.",
+    "intuition": [
+      "Interpoláció átmegy az ismert pontokon, de nem garantál jó extrapolációt.",
+      "Az Ax=b feladatot faktorizációval stabilabban és olcsóbban oldjuk meg, mint A⁻¹ explicit kiszámításával."
+    ],
+    "formalModel": "Ax=b ⇒ PA=LU,   Ly=Pb,   Ux=y",
+    "applications": [
+      "Wavetable és paramétergörbe interpoláció.",
+      "Mikrofontömb és fizikai hálózat lineáris rendszerének megoldása."
+    ],
+    "checkpoint": {
+      "prompt": "Miért nem célszerű Ax=b-hez explicit A⁻¹-et képezni?",
+      "options": [
+        {
+          "id": "cost",
+          "label": "A faktorizáció általában olcsóbb és numerikusan stabilabb"
+        },
+        { "id": "impossible", "label": "Mert inverz mátrix soha nem létezik" },
+        { "id": "nonlinear", "label": "Mert az inverz nem lineáris" }
+      ],
+      "answer": "cost",
+      "hint": "A megoldáshoz nincs szükség az inverz minden elemére."
+    }
+  },
+  {
+    "id": "07-least-squares-gradient",
+    "moduleId": "07-numerical-optimization",
+    "order": 5,
+    "title": "Legkisebb négyzetek és gradiensalapú optimalizálás",
+    "summary": "Célfüggvény, gradiens descent, learning rate, momentum és nemlineáris modellillesztés.",
+    "estimatedMinutes": 55,
+    "prerequisiteLessonIds": [
+      "07-interpolation-linear-solvers",
+      "01-partial-gradient",
+      "03-least-squares-pca"
+    ],
+    "skill": {
+      "id": "skill-gradient-optimization",
+      "title": "Gradiensoptimalizálás",
+      "description": "Differenciálható célfüggvények iteratív minimalizálása és konvergenciájának diagnosztikája.",
+      "category": "numerical-methods"
+    },
+    "realWorldProblem": "EQ-görbe, envelope-időállandó vagy nemlineáris modell paramétereit mérési hibára kell illeszteni.",
+    "intuition": [
+      "A negatív gradiens lokálisan a leggyorsabb csökkenés iránya.",
+      "A túl nagy lépés túllőhet, a túl kicsi nagyon lassú konvergenciát okoz."
+    ],
+    "formalModel": "θₖ₊₁=θₖ−η∇J(θₖ)",
+    "applications": [
+      "EQ curve fitting és kalibráció.",
+      "Envelope- és nonlinearitás-paraméter becslése raw/wet párokból."
+    ],
+    "checkpoint": {
+      "prompt": "Mi történhet túl nagy learning rate esetén?",
+      "options": [
+        {
+          "id": "diverge",
+          "label": "Az iteráció oszcillálhat vagy divergálhat"
+        },
+        { "id": "exact", "label": "Egy lépésben mindig egzakt optimumot ad" },
+        { "id": "zero", "label": "A gradiens definíció szerint nullává válik" }
+      ],
+      "answer": "diverge",
+      "hint": "A lokális lineáris közelítés csak korlátozott lépéshosszon megbízható."
+    }
+  },
+  {
+    "id": "07-constrained-ode-convergence",
+    "moduleId": "07-numerical-optimization",
+    "order": 6,
+    "title": "Korlátos optimalizálás, ODE-solv választás és konvergencia",
+    "summary": "Fizikai korlátok, Lagrange/KKT intuíció, solver-toleranciák és reprodukálható validáció.",
+    "estimatedMinutes": 60,
+    "prerequisiteLessonIds": [
+      "07-least-squares-gradient",
+      "04-nonlinear-numerical-ode"
+    ],
+    "skill": {
+      "id": "skill-constrained-convergence",
+      "title": "Korlátos optimalizálás és konvergencia",
+      "description": "Korlátos numerikus feladatok megoldása, solverbeállítások és konvergenciabizonyítékok értékelése.",
+      "category": "numerical-methods"
+    },
+    "realWorldProblem": "A kalibrált paramétereknek fizikailag érvényes tartományban kell maradniuk, miközben a solver pontossága és futási költsége is korlátos.",
+    "intuition": [
+      "Korlátos optimum lehet a megengedett tartomány határán, ahol a gradiens nem nulla.",
+      "A konvergenciát több toleranciával, lépésfinomítással és független ellenőrzéssel kell igazolni."
+    ],
+    "formalModel": "min J(θ) úgy, hogy gᵢ(θ)≤0 és hⱼ(θ)=0",
+    "applications": [
+      "Stabil szűrőpólusok és pozitív fizikai paraméterek kikényszerítése.",
+      "ODE-solver és optimalizáló toleranciák validálása referenciaeredménnyel."
+    ],
+    "checkpoint": {
+      "prompt": "Hol lehet egy korlátos probléma optimuma akkor is, ha ∇J nem nulla?",
+      "options": [
+        { "id": "boundary", "label": "A megengedett tartomány határán" },
+        { "id": "nowhere", "label": "Sehol" },
+        { "id": "infinity", "label": "Csak a végtelenben" }
+      ],
+      "answer": "boundary",
+      "hint": "A legjobb csökkenési irány a megengedett tartományon kívülre mutathat."
+    }
+  }
+]

@@ -1,0 +1,246 @@
+{
+  "lessonId": "00-diagnostic-number-sense",
+  "replaceSections": true,
+  "sections": [
+    {
+      "type": "real-world-problem",
+      "title": "Amikor a számológép helyes, az eredmény mégis rossz",
+      "body": "Egy envelope coefficient számítás 0,9998 helyett 9,998-at ad. A program hibátlanul végrehajtotta a beírt képletet, de az eredmény fizikailag képtelen: egy stabil lecsengés mintánkénti szorzója nem lehet jóval nagyobb egynél. A mérnöki számérzék feladata, hogy még a részletes hibakeresés előtt megszólaljon a belső riasztó: rossz az előjel, a nagyságrend, az egység vagy a modell feltételezése."
+    },
+    {
+      "type": "objectives",
+      "title": "Mit mér ez a diagnosztika?",
+      "body": "Nem azt várjuk, hogy minden képletet fejből tudj. A cél annak feltérképezése, mely gondolkodási műveletek automatikusak, melyek bizonytalanok, és hol kell a következő leckék előtt rövid javító kört tenni.",
+      "items": [
+        "Meg tudod becsülni egy eredmény előjelét és nagyságrendjét számolás előtt.",
+        "Biztosan használod a műveleti sorrendet, törteket, arányokat és hatványokat.",
+        "Fel tudsz ismerni egyszerű függvény- és algebrai kapcsolatokat.",
+        "Észreveszed a mértékegység- és dimenzióhibákat.",
+        "Külön tudod választani a számolási hibát a fogalmi bizonytalanságtól."
+      ]
+    },
+    {
+      "type": "intuition",
+      "title": "A diagnosztika nem vizsga",
+      "body": "Egy jó diagnosztika útvonalat választ, nem címkét ragaszt rád. Ha egy kérdésre lassan, segítséggel vagy hibásan válaszolsz, az nem kudarc: információ arról, hogy az adott előfeltétel még túl sok munkamemóriát foglal. A későbbi deriválás vagy DSP-modell akkor lesz könnyű, ha az algebrai és nagyságrendi lépések már nem vonják el a figyelmet az új fogalomtól. Ezért válaszolj külső segítség nélkül elsőre, és csak utána használd a tippet."
+    },
+    {
+      "type": "worked-example",
+      "title": "Három ellenőrzés minden számításhoz",
+      "body": "Becsüljük meg 19,8·0,051 értékét a pontos szorzás előtt.",
+      "steps": [
+        "Előjel: mindkét tényező pozitív, ezért az eredmény pozitív.",
+        "Nagyságrend: 19,8≈20 és 0,051≈0,05, ezért 20·0,05≈1.",
+        "Egység vagy jelentés: ha ez két arány szorzata, az eredmény dimenziótlan; ha fizikai mennyiségek, az egységeket is össze kell szorozni.",
+        "Pontos érték: 1,0098. Ez közel van az előzetes 1-es becsléshez, tehát hihető."
+      ]
+    },
+    {
+      "type": "intuition",
+      "title": "Nagyságrend: a tizedesvessző helyének védőhálója",
+      "body": "A nagyságrend tízes hatványokkal írja le, mekkora egy szám. A 48 000 körülbelül 5·10⁴, a 0,000021 pedig körülbelül 2·10⁻⁵. Szorzáskor a kitevők összeadódnak, osztáskor kivonódnak. Nem a pontos eredményt keressük, hanem azt a tartományt, amelybe annak esnie kell. Ha a részletes számolás ettől több tízes faktorral eltér, előbb a tizedesvesszőt és az egységváltást ellenőrizd."
+    },
+    {
+      "type": "formula",
+      "title": "Relatív eltérés és mérnöki becslés",
+      "body": "A puszta abszolút eltérés nem mondja meg, hogy egy hiba jelentős-e. Egy 0,1-es hiba nagy lehet 0,2 körül, de elhanyagolható 100 000 körül. A relatív eltérés a referenciaértékhez viszonyít.",
+      "formula": "relatív eltérés = |becslés − referencia| / |referencia|"
+    },
+    {
+      "type": "worked-example",
+      "title": "Dimenzióellenőrzés mint hibakereső eszköz",
+      "body": "Egy 48 kHz-es rendszerben 0,25 másodperc mintaszámát keressük.",
+      "steps": [
+        "Írd ki az egységeket: 48 000 minta/s · 0,25 s.",
+        "Az s kiesik, tehát az eredmény egysége minta. Ez megfelel a kérdésnek.",
+        "Becslés: negyed másodperc a 48 000 negyede, körülbelül 12 000 minta.",
+        "Ha 192 000-et kapnánk, az az egységek alapján még minta lenne, de a nagyságrendi becslés rögtön jelezné a hibát."
+      ]
+    },
+    {
+      "type": "common-mistakes",
+      "title": "Tipikus hibák és mit jeleznek",
+      "body": "A hiba típusa fontosabb, mint az, hogy egyetlen válasz jó vagy rossz lett.",
+      "items": [
+        {
+          "mistake": "A számológép eredményét ellenőrzés nélkül elfogadom.",
+          "correction": "Számolás előtt becsülj előjelet és nagyságrendet; utána hasonlítsd össze."
+        },
+        {
+          "mistake": "0,5%-ot 0,5-ként helyettesítek be.",
+          "correction": "A százalék századrészt jelent: 0,5%=0,005."
+        },
+        {
+          "mistake": "A mínuszjelet és a hatványozást balról jobbra kezelem.",
+          "correction": "Zárójelekkel tedd egyértelművé: −x²=−(x²), míg (−x)² pozitív."
+        },
+        {
+          "mistake": "A mértékegységet csak a végén írom oda.",
+          "correction": "Az egységeket minden sorban vidd tovább; algebrai ellenőrző rendszerként működnek."
+        },
+        {
+          "mistake": "Egy lassú válaszból rögtön fogalmi hiányra következtetek.",
+          "correction": "Külön jelöld: nem tudtam, tudtam de számolási hibát vétettem, vagy tudtam de még nem automatikus."
+        }
+      ]
+    },
+    {
+      "type": "reflection",
+      "title": "A saját kiindulási térképed",
+      "body": "A feladatsor végén ne csak a pontszámot nézd. Írd fel, mely kérdéseknél kellett tipp, melyeknél volt számolási hiba, és hol nem ismerted fel a módszert. A következő szintrehozó leckék közül ezek kapjanak elsőbbséget.",
+      "questions": [
+        "Melyik hibád volt puszta figyelmetlenség, és melyik jelez valódi fogalmi rést?",
+        "Melyik feladatot tudtad helyesen, de túl lassan megoldani?",
+        "Milyen ellenőrzési szokást fogsz minden későbbi számításnál használni?"
+      ]
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "sign-check",
+      "title": "Diagnosztika: előjel",
+      "prompt": "Milyen előjelű a (−3)·(−0,2)·5 szorzat?",
+      "difficulty": 1,
+      "context": "abstract",
+      "options": [
+        { "id": "positive", "label": "Pozitív" },
+        { "id": "negative", "label": "Negatív" },
+        { "id": "zero", "label": "Nulla" }
+      ],
+      "answer": "positive",
+      "hint": "Két negatív tényező szorzata pozitív; az öt is pozitív."
+    },
+    {
+      "id": "operation-order",
+      "title": "Diagnosztika: műveleti sorrend",
+      "prompt": "Mennyi 2+3·4²?",
+      "difficulty": 1,
+      "context": "abstract",
+      "options": [
+        { "id": "50", "label": "50" },
+        { "id": "80", "label": "80" },
+        { "id": "196", "label": "196" }
+      ],
+      "answer": "50",
+      "hint": "Előbb a hatvány, utána a szorzás, végül az összeadás."
+    },
+    {
+      "id": "percentage",
+      "title": "Diagnosztika: százalék",
+      "prompt": "Egy paraméter 240-ről 10%-kal csökken. Mi az új érték?",
+      "difficulty": 1,
+      "context": "audio",
+      "options": [
+        { "id": "216", "label": "216" },
+        { "id": "230", "label": "230" },
+        { "id": "264", "label": "264" }
+      ],
+      "answer": "216",
+      "hint": "A 10%-os csökkenés az eredeti érték 90%-át hagyja meg."
+    },
+    {
+      "id": "power-scale",
+      "title": "Diagnosztika: hatványok",
+      "prompt": "Melyik egyenlő (2·10³)·(3·10⁻⁵) értékével?",
+      "difficulty": 2,
+      "context": "electronics",
+      "options": [
+        { "id": "006", "label": "0,06" },
+        { "id": "06", "label": "0,6" },
+        { "id": "600", "label": "600" }
+      ],
+      "answer": "006",
+      "hint": "A számrészek szorzata 6, a tízes kitevőké 3−5=−2."
+    },
+    {
+      "id": "estimate",
+      "title": "Diagnosztika: becslés",
+      "prompt": "Melyik a legjobb gyors becslés 199·0,49 értékére?",
+      "difficulty": 2,
+      "context": "abstract",
+      "options": [
+        { "id": "100", "label": "Körülbelül 100" },
+        { "id": "10", "label": "Körülbelül 10" },
+        { "id": "1000", "label": "Körülbelül 1000" }
+      ],
+      "answer": "100",
+      "hint": "Kerekíts 199-et 200-ra, 0,49-et 0,5-re."
+    },
+    {
+      "id": "algebra",
+      "title": "Diagnosztika: egyenletrendezés",
+      "prompt": "Ha 3x−5=16, mennyi x?",
+      "difficulty": 2,
+      "context": "abstract",
+      "options": [
+        { "id": "7", "label": "7" },
+        { "id": "11", "label": "11" },
+        { "id": "37", "label": "37/3" }
+      ],
+      "answer": "7",
+      "hint": "Adj ötöt mindkét oldalhoz, majd ossz hárommal."
+    },
+    {
+      "id": "function",
+      "title": "Diagnosztika: függvényérték",
+      "prompt": "Ha f(x)=x²−1, mennyi f(−3)?",
+      "difficulty": 2,
+      "context": "mechanics",
+      "options": [
+        { "id": "8", "label": "8" },
+        { "id": "minus10", "label": "−10" },
+        { "id": "2", "label": "2" }
+      ],
+      "answer": "8",
+      "hint": "Helyettesíts zárójelben: (−3)²−1."
+    },
+    {
+      "id": "samples-units",
+      "title": "Diagnosztika: mértékegység",
+      "prompt": "Hány minta van 0,25 másodpercben 48 000 minta/s mintavételnél?",
+      "difficulty": 2,
+      "context": "audio",
+      "options": [
+        { "id": "12000", "label": "12 000 minta" },
+        { "id": "192000", "label": "192 000 minta" },
+        { "id": "48000", "label": "48 000 minta" }
+      ],
+      "answer": "12000",
+      "hint": "A mintavételi frekvenciát szorozd az idővel; a másodperc egység kiesik."
+    },
+    {
+      "id": "ratio",
+      "title": "Diagnosztika: arány",
+      "prompt": "Egy kimenet amplitúdója 2, a bemeneté 8. Mennyi a kimenet/bemenet amplitúdóarány?",
+      "difficulty": 1,
+      "context": "audio",
+      "options": [
+        { "id": "quarter", "label": "0,25" },
+        { "id": "four", "label": "4" },
+        { "id": "six", "label": "6" }
+      ],
+      "answer": "quarter",
+      "hint": "A kérdés sorrendje kimenet osztva bemenettel: 2/8."
+    },
+    {
+      "id": "reasonableness",
+      "title": "Diagnosztika: hihetőség",
+      "prompt": "Egy passzív feszültségosztó 5 V bemenetből 50 V kimenetet ad a számításod szerint. Mi legyen az első következtetés?",
+      "difficulty": 2,
+      "context": "electronics",
+      "options": [
+        {
+          "id": "recheck",
+          "label": "Ellenőrizni kell a képletet, arányt és egységeket"
+        },
+        {
+          "id": "accept",
+          "label": "El kell fogadni, mert a számológép ezt adta"
+        },
+        { "id": "round", "label": "50 V-ot 100 V-ra kell kerekíteni" }
+      ],
+      "answer": "recheck",
+      "hint": "Passzív osztó nem szolgáltat a bemenetnél nagyobb feszültséget energiaforrás nélkül."
+    }
+  ]
+}

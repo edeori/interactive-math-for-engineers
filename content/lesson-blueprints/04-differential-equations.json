@@ -1,0 +1,195 @@
+[
+  {
+    "id": "04-first-order-ode",
+    "moduleId": "04-differential-equations",
+    "order": 1,
+    "title": "Elsőrendű differenciálegyenletek",
+    "summary": "Állapot és változási törvény, kezdetiérték-probléma, szeparálható és lineáris modellek.",
+    "estimatedMinutes": 50,
+    "prerequisiteLessonIds": [
+      "01-chain-implicit",
+      "02-antiderivative-fundamental"
+    ],
+    "skill": {
+      "id": "skill-first-order-ode",
+      "title": "Elsőrendű ODE",
+      "description": "Elsőrendű kezdetiérték-problémák modellezése és megoldása.",
+      "category": "differential-equations"
+    },
+    "realWorldProblem": "Egy RC-kör feszültségének vagy egy burkoló release-ének jövőjét a pillanatnyi állapot változási törvénye határozza meg.",
+    "intuition": [
+      "A differenciálegyenlet nem közvetlenül a görbét, hanem annak változási szabályát adja meg.",
+      "A kezdeti érték választja ki a megoldáscsalád konkrét tagját."
+    ],
+    "formalModel": "y′ + ay = u(t),   y(0)=y₀",
+    "applications": [
+      "RC aluláteresztő és hőmérsékleti lehűlés.",
+      "Envelope follower attack/release modellje."
+    ],
+    "checkpoint": {
+      "prompt": "Miért kell kezdeti feltétel egy elsőrendű ODE egyértelmű megoldásához?",
+      "options": [
+        { "id": "constant", "label": "Mert rögzíti az integrálási konstanst" },
+        { "id": "unit", "label": "Mert megadja a mértékegységet" },
+        { "id": "order", "label": "Mert megváltoztatja az egyenlet rendjét" }
+      ],
+      "answer": "constant",
+      "hint": "Az ODE általában megoldáscsaládot határoz meg."
+    }
+  },
+  {
+    "id": "04-second-order-ode",
+    "moduleId": "04-differential-equations",
+    "order": 2,
+    "title": "Másodrendű rendszerek és csillapítás",
+    "summary": "Gyorsulás, rugó–tömeg–csillapító és RLC természetes válasz.",
+    "estimatedMinutes": 50,
+    "prerequisiteLessonIds": ["04-first-order-ode"],
+    "skill": {
+      "id": "skill-second-order-ode",
+      "title": "Másodrendű ODE",
+      "description": "Másodrendű lineáris rendszerek csillapításának és természetes válaszának elemzése.",
+      "category": "differential-equations"
+    },
+    "realWorldProblem": "Egy hangszórómembrán vagy RLC-kör túllövést, csillapított rezgést vagy lassú visszatérést mutathat.",
+    "intuition": [
+      "A második derivált tehetetlenséget, az első derivált csillapítást, az állapot pedig visszatérítő erőt reprezentál.",
+      "A csillapítási arány határozza meg a válasz alakját."
+    ],
+    "formalModel": "y″ + 2ζωₙy′ + ωₙ²y = 0",
+    "applications": [
+      "Rugó–tömeg–csillapító és hangszórómembrán.",
+      "RLC tranziens és biquad analóg prototípus."
+    ],
+    "checkpoint": {
+      "prompt": "Melyik esetben jelenik meg csillapított oszcilláció?",
+      "options": [
+        { "id": "under", "label": "0<ζ<1 alulcsillapításnál" },
+        { "id": "critical", "label": "Csak ζ=1 esetén" },
+        { "id": "over", "label": "Csak ζ>1 esetén" }
+      ],
+      "answer": "under",
+      "hint": "Az alulcsillapított póluspár komplex."
+    }
+  },
+  {
+    "id": "04-forced-resonance",
+    "moduleId": "04-differential-equations",
+    "order": 3,
+    "title": "Gerjesztett rendszerek és rezonancia",
+    "summary": "Homogén és partikuláris válasz, állandósult szinuszos gerjesztés és rezonanciacsúcs.",
+    "estimatedMinutes": 50,
+    "prerequisiteLessonIds": ["04-second-order-ode", "03-complex-euler"],
+    "skill": {
+      "id": "skill-forced-resonance",
+      "title": "Gerjesztés és rezonancia",
+      "description": "Lineáris rendszerek kényszerített válaszának és rezonanciájának elemzése.",
+      "category": "differential-equations"
+    },
+    "realWorldProblem": "Periodikus motorzaj vagy hanggerjesztés egy természetes módus közelében aránytalanul nagy választ okozhat.",
+    "intuition": [
+      "A teljes válasz a kezdeti tranziens és a gerjesztéshez igazodó állandósult rész összege.",
+      "Rezonancián a rendszer hatékonyan gyűjt energiát a gerjesztéstől."
+    ],
+    "formalModel": "y″+2ζωₙy′+ωₙ²y = F cos(ωt)",
+    "applications": [
+      "Akusztikai szobamódus gerjesztése.",
+      "RLC frekvenciaválasz és mechanikai rezonancia."
+    ],
+    "checkpoint": {
+      "prompt": "Mitől különösen nagy a válasz rezonancia közelében?",
+      "options": [
+        {
+          "id": "frequency",
+          "label": "A gerjesztés frekvenciája közel van egy természetes frekvenciához"
+        },
+        { "id": "zero", "label": "A gerjesztés mindig nulla" },
+        { "id": "linear", "label": "A rendszernek nincs állapota" }
+      ],
+      "answer": "frequency",
+      "hint": "A gerjesztés fázisa ciklusról ciklusra támogatja az energiatárolást."
+    }
+  },
+  {
+    "id": "04-state-space-stability",
+    "moduleId": "04-differential-equations",
+    "order": 4,
+    "title": "Lineáris rendszerek, állapottér és stabilitás",
+    "summary": "Több állapot összekapcsolása, mátrixexponenciális és sajátérték-alapú stabilitás.",
+    "estimatedMinutes": 55,
+    "prerequisiteLessonIds": ["04-forced-resonance", "03-eigenvalues"],
+    "skill": {
+      "id": "skill-state-space",
+      "title": "Állapottér és stabilitás",
+      "description": "Lineáris dinamikus rendszerek állapottér-reprezentációjának és stabilitásának vizsgálata.",
+      "category": "differential-equations"
+    },
+    "realWorldProblem": "Több energiatároló elemből vagy csatolt rezonátorból álló rendszer egyetlen skalár ODE helyett állapotvektort igényel.",
+    "intuition": [
+      "Az állapot a jövő előrejelzéséhez szükséges minimális memória.",
+      "A rendszer sajátértékei megmondják, mely módusok csengenek le vagy nőnek."
+    ],
+    "formalModel": "x′=Ax+Bu,   y=Cx+Du",
+    "applications": [
+      "State-variable filter és analóg áramkörmodellezés.",
+      "Csatolt mechanikai vagy feedback delay network rendszer."
+    ],
+    "checkpoint": {
+      "prompt": "Mikor aszimptotikusan stabil egy folytonos lineáris rendszer?",
+      "options": [
+        {
+          "id": "left",
+          "label": "Ha A minden sajátértékének valós része negatív"
+        },
+        { "id": "right", "label": "Ha minden sajátérték pozitív" },
+        {
+          "id": "unit",
+          "label": "Ha minden sajátérték abszolút értéke pontosan 1"
+        }
+      ],
+      "answer": "left",
+      "hint": "A negatív valós rész exponenciális lecsengést jelent."
+    }
+  },
+  {
+    "id": "04-nonlinear-numerical-ode",
+    "moduleId": "04-differential-equations",
+    "order": 5,
+    "title": "Nemlineáris ODE-k és numerikus megoldók",
+    "summary": "Fázissík, egyensúlyi pont, Euler és Runge–Kutta, lépésköz és stabilitás.",
+    "estimatedMinutes": 55,
+    "prerequisiteLessonIds": [
+      "04-state-space-stability",
+      "01-numerical-differentiation"
+    ],
+    "skill": {
+      "id": "skill-nonlinear-ode-solvers",
+      "title": "Nemlineáris ODE és solverk",
+      "description": "Nemlineáris dinamikus rendszerek kvalitatív és numerikus elemzése.",
+      "category": "differential-equations"
+    },
+    "realWorldProblem": "Dióda, telítés vagy állapotfüggő csillapítás mellett nincs egyszerű zárt megoldás, a rendszert időlépésekben kell szimulálni.",
+    "intuition": [
+      "A numerikus solver lokális változási szabályból lépésenként épít pályát.",
+      "A kisebb lépés általában pontosabb, de költségesebb; rossz módszer instabillá válhat."
+    ],
+    "formalModel": "xₙ₊₁ = xₙ + h f(tₙ,xₙ)",
+    "applications": [
+      "Nemlineáris diódamodell és analóg plugin szimuláció.",
+      "Euler és Runge–Kutta összehasonlítása rezonátoron."
+    ],
+    "checkpoint": {
+      "prompt": "Mit okozhat túl nagy h explicit Euler-módszernél?",
+      "options": [
+        {
+          "id": "unstable",
+          "label": "Numerikus instabilitást még stabil fizikai rendszernél is"
+        },
+        { "id": "exact", "label": "Mindig egzakt megoldást" },
+        { "id": "static", "label": "Az ODE algebrai egyenletté válását" }
+      ],
+      "answer": "unstable",
+      "hint": "A diszkrét lépés stabilitási tartománya korlátozott."
+    }
+  }
+]

@@ -1,0 +1,247 @@
+[
+  {
+    "id": "01-limits-continuity",
+    "moduleId": "01-change-and-calculus",
+    "order": 1,
+    "title": "Határérték és folytonosság",
+    "summary": "A közelítés, a lokális viselkedés és a törésmentes változás intuitív alapjai.",
+    "estimatedMinutes": 40,
+    "prerequisiteLessonIds": ["00-functions-graphs"],
+    "skill": {
+      "id": "skill-limits",
+      "title": "Határérték",
+      "description": "Függvények közelítési viselkedésének és folytonosságának értelmezése.",
+      "category": "calculus"
+    },
+    "realWorldProblem": "Egy digitális waveshaper hallható kattanást okozhat, ha az átviteli görbéje ugrik vagy rosszul illeszkedik.",
+    "intuition": [
+      "A határérték azt vizsgálja, mihez közelít a kimenet, amikor a bemenet egy ponthoz közelít.",
+      "A folytonosság kizárja az ugrásokat és lyukakat."
+    ],
+    "formalModel": "limₓ→a f(x) = L,   folytonos ha L = f(a)",
+    "applications": [
+      "Darabonként definiált soft clip görbék illesztése.",
+      "Mintavételi lépés nullához közelítésének értelmezése."
+    ],
+    "checkpoint": {
+      "prompt": "Melyik feltétel szükséges f folytonosságához az a pontban?",
+      "options": [
+        { "id": "equal", "label": "limₓ→a f(x)=f(a)" },
+        { "id": "zero", "label": "f(a)=0" },
+        { "id": "positive", "label": "f(a)>0" }
+      ],
+      "answer": "equal",
+      "hint": "A közelített és a tényleges függvényértéknek egyeznie kell."
+    }
+  },
+  {
+    "id": "01-derivative-rate",
+    "moduleId": "01-change-and-calculus",
+    "order": 2,
+    "title": "A derivált mint változási sebesség",
+    "summary": "Szelőből érintő, átlagosból pillanatnyi változás.",
+    "estimatedMinutes": 45,
+    "prerequisiteLessonIds": ["01-limits-continuity"],
+    "skill": {
+      "id": "skill-derivative-intuition",
+      "title": "Deriváltintuíció",
+      "description": "A derivált meredekségként és pillanatnyi változási sebességként való értelmezése.",
+      "category": "calculus"
+    },
+    "realWorldProblem": "Egy tranziensdetektor nemcsak a jelszintet, hanem annak gyors változását keresi.",
+    "intuition": [
+      "A differenciahányados két pont közötti átlagos meredekség.",
+      "A pontok összehúzásával megkapjuk a pillanatnyi meredekséget."
+    ],
+    "formalModel": "f′(x) = limₕ→0 [f(x+h)−f(x)]/h",
+    "applications": [
+      "Pozícióból sebesség és gyorsulás.",
+      "Waveform-meredekség és tranzienskezdet felismerése."
+    ],
+    "checkpoint": {
+      "prompt": "Mit ad meg a derivált geometriailag egy pontban?",
+      "options": [
+        { "id": "slope", "label": "Az érintő meredekségét" },
+        { "id": "area", "label": "A görbe alatti teljes területet" },
+        { "id": "root", "label": "A függvény összes gyökét" }
+      ],
+      "answer": "slope",
+      "hint": "A szelő határhelyzete az érintő."
+    }
+  },
+  {
+    "id": "01-derivative-rules",
+    "moduleId": "01-change-and-calculus",
+    "order": 3,
+    "title": "Alapvető deriválási szabályok",
+    "summary": "Hatvány-, összeg-, szorzat- és hányadosszabály.",
+    "estimatedMinutes": 45,
+    "prerequisiteLessonIds": ["01-derivative-rate"],
+    "skill": {
+      "id": "skill-derivative-rules",
+      "title": "Deriválási szabályok",
+      "description": "Összetett algebrai kifejezések deriváltjának szabályos kiszámítása.",
+      "category": "calculus"
+    },
+    "realWorldProblem": "Egy nemlineáris átviteli görbe érzékenységét analitikusan kell kiszámítani minden bemeneti szinten.",
+    "intuition": [
+      "A deriválás lineáris: összegek tagonként deriválhatók.",
+      "Szorzatnál mindkét tényező változását figyelembe kell venni."
+    ],
+    "formalModel": "(xⁿ)′=nxⁿ⁻¹,   (uv)′=u′v+uv′",
+    "applications": [
+      "Polinomiális waveshaper lokális erősítése.",
+      "Energia- és teljesítménykifejezések változása."
+    ],
+    "checkpoint": {
+      "prompt": "Mi (x³)' értéke?",
+      "options": [
+        { "id": "3x2", "label": "3x²" },
+        { "id": "x2", "label": "x²" },
+        { "id": "3x", "label": "3x" }
+      ],
+      "answer": "3x2",
+      "hint": "A kitevő előre kerül, majd eggyel csökken."
+    }
+  },
+  {
+    "id": "01-chain-implicit",
+    "moduleId": "01-change-and-calculus",
+    "order": 5,
+    "title": "Láncszabály és implicit deriválás",
+    "summary": "Egymásba ágyazott rendszerek és közvetett függőségek változása.",
+    "estimatedMinutes": 45,
+    "prerequisiteLessonIds": ["01-derivative-rules", "exponential-decay"],
+    "skill": {
+      "id": "skill-chain-rule",
+      "title": "Láncszabály",
+      "description": "Összetett és implicit függvénykapcsolatok deriválása.",
+      "category": "calculus"
+    },
+    "realWorldProblem": "Egy kompresszor kimenete a detektor, a gain computer és a simítás egymásba ágyazott transzformációin megy át.",
+    "intuition": [
+      "A teljes változás a külső és a belső érzékenység szorzata.",
+      "Implicit kapcsolatnál y is x függvénye, még ha nincs külön kifejezve."
+    ],
+    "formalModel": "d/dx f(g(x)) = f′(g(x))g′(x)",
+    "applications": [
+      "dB-ben definiált transfer curve deriváltja.",
+      "Nemlineáris áramköri karakterisztika érzékenysége."
+    ],
+    "checkpoint": {
+      "prompt": "Mi hiányzik leggyakrabban a sin(x²) hibás deriválásából?",
+      "options": [
+        { "id": "inner", "label": "A belső x² deriváltja" },
+        { "id": "constant", "label": "Egy integrálási konstans" },
+        { "id": "limit", "label": "A végtelen határérték" }
+      ],
+      "answer": "inner",
+      "hint": "A külső deriváltját meg kell szorozni a belső függvény deriváltjával."
+    }
+  },
+  {
+    "id": "01-partial-gradient",
+    "moduleId": "01-change-and-calculus",
+    "order": 6,
+    "title": "Parciális derivált és gradiens",
+    "summary": "Többparaméteres rendszerek érzékenysége és a leggyorsabb növekedés iránya.",
+    "estimatedMinutes": 45,
+    "prerequisiteLessonIds": ["01-chain-implicit", "00-vectors-coordinates"],
+    "skill": {
+      "id": "skill-gradient",
+      "title": "Parciális derivált és gradiens",
+      "description": "Többváltozós függvények irányfüggő változásának elemzése.",
+      "category": "calculus"
+    },
+    "realWorldProblem": "Egy EQ-illesztés hibája egyszerre függ a frekvenciától, gain-től és Q-tól.",
+    "intuition": [
+      "A parciális derivált egy változó hatását méri, miközben a többit rögzítjük.",
+      "A gradiens ezeket az érzékenységeket egy vektorba gyűjti."
+    ],
+    "formalModel": "∇f = (∂f/∂x₁, …, ∂f/∂xₙ)",
+    "applications": [
+      "Pluginparaméterek érzékenységi térképe.",
+      "Hőmérséklet- vagy nyomásmező leggyorsabb növekedési iránya."
+    ],
+    "checkpoint": {
+      "prompt": "Merre mutat egy skalármező gradiense?",
+      "options": [
+        { "id": "increase", "label": "A leggyorsabb növekedés irányába" },
+        { "id": "constant", "label": "Mindig az x tengely irányába" },
+        { "id": "decrease", "label": "Mindig a leglassabb csökkenés irányába" }
+      ],
+      "answer": "increase",
+      "hint": "A gradiens az iránymenti derivált maximumának iránya."
+    }
+  },
+  {
+    "id": "01-extrema-optimization",
+    "moduleId": "01-change-and-calculus",
+    "order": 7,
+    "title": "Lokális szélsőértékek és optimalizálás",
+    "summary": "Kritikus pontok, görbület, lokális és globális optimum.",
+    "estimatedMinutes": 45,
+    "prerequisiteLessonIds": ["01-partial-gradient"],
+    "skill": {
+      "id": "skill-extrema",
+      "title": "Szélsőértékek",
+      "description": "Kritikus pontok és lokális optimumok deriváltalapú vizsgálata.",
+      "category": "calculus"
+    },
+    "realWorldProblem": "Egy rezonanciacsúcs helyét vagy egy detektorküszöb legjobb értékét célfüggvény optimumaként keressük.",
+    "intuition": [
+      "Sima belső optimumnál az első derivált eltűnik.",
+      "A nulla derivált önmagában nem dönti el, minimum, maximum vagy nyeregpont van-e."
+    ],
+    "formalModel": "f′(x*)=0,   f″(x*)>0 ⇒ lokális minimum",
+    "applications": [
+      "Rezonanciacsúcs és notch minimum keresése.",
+      "Detektorküszöb hangolása hibaköltségre."
+    ],
+    "checkpoint": {
+      "prompt": "Mit bizonyít önmagában az f'(x*)=0 feltétel?",
+      "options": [
+        { "id": "candidate", "label": "Csak azt, hogy x* kritikus pontjelölt" },
+        { "id": "minimum", "label": "Mindig globális minimumot" },
+        { "id": "maximum", "label": "Mindig lokális maximumot" }
+      ],
+      "answer": "candidate",
+      "hint": "A pont típusához további vizsgálat, például második derivált kell."
+    }
+  },
+  {
+    "id": "01-numerical-differentiation",
+    "moduleId": "01-change-and-calculus",
+    "order": 8,
+    "title": "Numerikus deriválás és tranziensdetektálás",
+    "summary": "Véges differenciák, lépésközhiba és zajérzékeny változásbecslés.",
+    "estimatedMinutes": 45,
+    "prerequisiteLessonIds": ["01-extrema-optimization"],
+    "skill": {
+      "id": "skill-numerical-derivative",
+      "title": "Numerikus deriválás",
+      "description": "Derivált közelítése mintákból, a diszkretizációs és kerekítési hibák mérlegelésével.",
+      "category": "numerical-methods"
+    },
+    "realWorldProblem": "Mért vagy mintavételezett jelhez nincs zárt képlet, a változási sebességet szomszédos mintákból kell becsülni.",
+    "intuition": [
+      "A túl nagy lépés elmossa a lokális részleteket.",
+      "A túl kicsi lépés felerősíti a zajt és a lebegőpontos hibát."
+    ],
+    "formalModel": "f′(x) ≈ [f(x+h)−f(x−h)]/(2h)",
+    "applications": [
+      "Központi differencia mérési adatokon.",
+      "Tranziens onset felismerése simított burkoló meredekségéből."
+    ],
+    "checkpoint": {
+      "prompt": "Miért nem érdemes h-t korlátlanul csökkenteni numerikus deriválásnál?",
+      "options": [
+        { "id": "rounding", "label": "A kerekítési hiba és zaj felerősödhet" },
+        { "id": "formula", "label": "A derivált definíciójelet vált" },
+        { "id": "units", "label": "A mértékegység eltűnik" }
+      ],
+      "answer": "rounding",
+      "hint": "Közeli számok kivonása jelentős számjegyeket veszít."
+    }
+  }
+]

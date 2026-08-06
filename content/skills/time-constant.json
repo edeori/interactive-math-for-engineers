@@ -1,0 +1,8 @@
+{
+  "id": "time-constant",
+  "title": "Időállandó",
+  "description": "Folytonos és diszkrét lecsengések időállandójának értelmezése.",
+  "prerequisites": ["exponential-functions"],
+  "category": "dsp",
+  "masteryThreshold": 0.8
+}

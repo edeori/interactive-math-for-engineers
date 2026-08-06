@@ -1,0 +1,35 @@
+{
+  "id": "discrete-decay-coefficient",
+  "version": 1,
+  "title": "Diszkrét lecsengési együttható",
+  "skillIds": ["exponential-functions", "time-constant"],
+  "difficulty": 4,
+  "context": "audio",
+  "parameters": {
+    "sampleRate": { "type": "choice", "choices": [44100, 48000, 96000] },
+    "timeConstantMs": { "type": "integer", "min": 50, "max": 500 }
+  },
+  "promptTemplate": "Egy y[n]=α·y[n-1] burkoló mintavételezése {{sampleRate}} Hz, időállandója {{timeConstantMs}} ms. Számítsd ki α=e^(-1/(fₛ·τ)) értékét!",
+  "answerType": "numeric",
+  "solution": {
+    "type": "formula",
+    "expression": "exp(-1 / (sampleRate * (timeConstantMs / 1000)))"
+  },
+  "hints": [
+    {
+      "id": "seconds",
+      "text": "Először váltsd át az időállandót milliszekundumból másodpercbe."
+    },
+    {
+      "id": "sample-period",
+      "text": "Egy minta ideje T=1/fₛ, ezért α=e^(-T/τ)."
+    }
+  ],
+  "validators": [
+    {
+      "type": "numeric-tolerance",
+      "absoluteTolerance": 0.000001,
+      "relativeTolerance": 0.000001
+    }
+  ]
+}

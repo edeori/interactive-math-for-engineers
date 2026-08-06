@@ -1,0 +1,10 @@
+pyproject.toml
+app/__init__.py
+app/main.py
+app/parser.py
+engineering_math_symbolic_service.egg-info/PKG-INFO
+engineering_math_symbolic_service.egg-info/SOURCES.txt
+engineering_math_symbolic_service.egg-info/dependency_links.txt
+engineering_math_symbolic_service.egg-info/requires.txt
+engineering_math_symbolic_service.egg-info/top_level.txt
+tests/test_api.py

@@ -1,0 +1,33 @@
+{
+  "id": "exponential-decay-basic",
+  "version": 1,
+  "title": "Megmaradó amplitúdó",
+  "skillIds": ["exponential-functions", "time-constant"],
+  "difficulty": 2,
+  "context": "audio",
+  "parameters": {
+    "initialAmplitude": { "type": "integer", "min": 2, "max": 10 },
+    "timeConstant": { "type": "decimal", "min": 0.2, "max": 2, "step": 0.1 },
+    "time": { "type": "decimal", "min": 0.1, "max": 3, "step": 0.1 }
+  },
+  "promptTemplate": "Egy burkológörbe {{initialAmplitude}} kezdeti amplitúdóról indul, és A(t)=A₀·exp(-t/τ) szerint cseng le. Mennyi az amplitúdó t={{time}} s-nál, ha τ={{timeConstant}} s?",
+  "answerType": "numeric",
+  "solution": {
+    "type": "formula",
+    "expression": "initialAmplitude * exp(-time / timeConstant)"
+  },
+  "hints": [
+    {
+      "id": "substitute",
+      "text": "Helyettesítsd be az adatokat az A(t)=A₀·e^(-t/τ) képletbe."
+    },
+    { "id": "exponent", "text": "Először a -t/τ kitevőt számold ki." }
+  ],
+  "validators": [
+    {
+      "type": "numeric-tolerance",
+      "absoluteTolerance": 0.001,
+      "relativeTolerance": 0.001
+    }
+  ]
+}

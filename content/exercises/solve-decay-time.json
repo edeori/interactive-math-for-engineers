@@ -1,0 +1,39 @@
+{
+  "id": "solve-decay-time",
+  "version": 1,
+  "title": "Lecsengési idő kiszámítása",
+  "skillIds": ["exponential-functions", "time-constant"],
+  "difficulty": 3,
+  "context": "audio",
+  "parameters": {
+    "initialAmplitude": { "type": "integer", "min": 4, "max": 12 },
+    "ratio": { "type": "choice", "choices": [0.25, 0.5, 0.75] },
+    "timeConstant": { "type": "decimal", "min": 0.2, "max": 1.5, "step": 0.1 },
+    "targetAmplitude": {
+      "type": "derived",
+      "expression": "initialAmplitude * ratio",
+      "decimals": 3
+    }
+  },
+  "promptTemplate": "A={{initialAmplitude}} kezdeti értékről mennyi idő alatt jut el a burkoló A={{targetAmplitude}} értékig, ha τ={{timeConstant}} s?",
+  "answerType": "numeric",
+  "solution": {
+    "type": "formula",
+    "expression": "-timeConstant * log(targetAmplitude / initialAmplitude)"
+  },
+  "hints": [
+    { "id": "divide", "text": "Oszd el az egyenletet A₀-lal." },
+    {
+      "id": "log",
+      "text": "Vedd mindkét oldal természetes logaritmusát, majd rendezd t-re."
+    }
+  ],
+  "validators": [
+    {
+      "type": "numeric-tolerance",
+      "absoluteTolerance": 0.002,
+      "relativeTolerance": 0.001
+    }
+  ],
+  "unit": "s"
+}

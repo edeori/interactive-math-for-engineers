@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: engineering-math-symbolic-service
+Version: 0.1.0
+Summary: Bounded deterministic symbolic mathematics API
+Requires-Python: >=3.11
+Requires-Dist: fastapi<1,>=0.116
+Requires-Dist: pydantic<3,>=2.11
+Requires-Dist: sympy<2,>=1.14
+Requires-Dist: uvicorn[standard]<1,>=0.35
+Provides-Extra: test
+Requires-Dist: httpx<1,>=0.28; extra == "test"
+Requires-Dist: pytest<10,>=8.4; extra == "test"

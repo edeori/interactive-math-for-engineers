@@ -1,0 +1,189 @@
+[
+  {
+    "id": "02-antiderivative-fundamental",
+    "moduleId": "02-integration",
+    "order": 1,
+    "title": "Primitív függvény és az analízis alaptétele",
+    "summary": "A deriválás megfordítása és a lokális változás összekapcsolása a teljes felhalmozással.",
+    "estimatedMinutes": 45,
+    "prerequisiteLessonIds": ["01-derivative-rules"],
+    "skill": {
+      "id": "skill-antiderivative",
+      "title": "Primitív függvény",
+      "description": "Primitív függvények felismerése és az analízis alaptételének alkalmazása.",
+      "category": "calculus"
+    },
+    "realWorldProblem": "A sebességből vissza akarjuk kapni a megtett utat, vagy a teljesítményből az elhasznált energiát.",
+    "intuition": [
+      "Az integrálás a pillanatnyi hozzájárulások felhalmozása.",
+      "A primitív függvény deriváltja visszaadja az integrandust."
+    ],
+    "formalModel": "∫ₐᵇ f(x)dx = F(b)−F(a),   F′=f",
+    "applications": [
+      "Sebességből út számítása.",
+      "Teljesítményből energia felhalmozása."
+    ],
+    "checkpoint": {
+      "prompt": "Miért jelenik meg +C a határozatlan integrálban?",
+      "options": [
+        { "id": "family", "label": "Mert minden konstans deriváltja nulla" },
+        { "id": "units", "label": "Mert az integrálnak nincs egysége" },
+        { "id": "error", "label": "Csak numerikus hiba miatt" }
+      ],
+      "answer": "family",
+      "hint": "Az egymástól konstansban különböző függvények deriváltja azonos."
+    }
+  },
+  {
+    "id": "02-definite-accumulation",
+    "moduleId": "02-integration",
+    "order": 2,
+    "title": "Határozott integrál, terület és átlagérték",
+    "summary": "Előjeles terület, nettó felhalmozás és folytonos átlag.",
+    "estimatedMinutes": 45,
+    "prerequisiteLessonIds": ["02-antiderivative-fundamental"],
+    "skill": {
+      "id": "skill-definite-integral",
+      "title": "Határozott integrál",
+      "description": "Határozott integrál értelmezése felhalmozásként és átlagérték számítása.",
+      "category": "calculus"
+    },
+    "realWorldProblem": "Egy időben változó áram teljes töltését és egy jel átlagos szintjét a teljes időintervallumból kell meghatározni.",
+    "intuition": [
+      "A határozott integrál sok keskeny előjeles hozzájárulás határértéke.",
+      "Az átlagérték a teljes felhalmozás osztva az intervallum hosszával."
+    ],
+    "formalModel": "f̄ = 1/(b−a) ∫ₐᵇ f(x)dx",
+    "applications": [
+      "Töltés számítása áramból.",
+      "Jel DC-komponense és időátlaga."
+    ],
+    "checkpoint": {
+      "prompt": "Lehet-e egy határozott integrál negatív?",
+      "options": [
+        { "id": "yes", "label": "Igen, mert előjeles felhalmozást mér" },
+        { "id": "no", "label": "Nem, a terület mindig pozitív" },
+        { "id": "onlycomplex", "label": "Csak komplex függvénynél" }
+      ],
+      "answer": "yes",
+      "hint": "Az x tengely alatti részek negatívan járulnak hozzá."
+    }
+  },
+  {
+    "id": "02-numerical-improper",
+    "moduleId": "02-integration",
+    "order": 3,
+    "title": "Numerikus és improprius integrálok",
+    "summary": "Trapéz- és Simpson-módszer, végtelen tartományok és szingularitások.",
+    "estimatedMinutes": 45,
+    "prerequisiteLessonIds": ["02-definite-accumulation"],
+    "skill": {
+      "id": "skill-numerical-integration",
+      "title": "Numerikus integrálás",
+      "description": "Integrálok közelítése mintákból és konvergencia vizsgálata nem szokványos tartományokon.",
+      "category": "numerical-methods"
+    },
+    "realWorldProblem": "Mérési adatokból vagy ismeretlen zárt alakú spektrumból kell teljes energiát becsülni.",
+    "intuition": [
+      "A numerikus módszer egyszerű alakzatokkal közelíti a görbe alatti területet.",
+      "Improprius integrálnál határérték dönti el, véges-e a felhalmozás."
+    ],
+    "formalModel": "∫ₐᵇ f(x)dx ≈ h[½f₀ + Σfᵢ + ½fₙ]",
+    "applications": [
+      "Spektrális energia becslése frekvenciabinekből.",
+      "Hosszú lecsengés teljes energiájának konvergenciája."
+    ],
+    "checkpoint": {
+      "prompt": "Mit jelent egy improprius integrál konvergenciája?",
+      "options": [
+        { "id": "finite", "label": "A definiáló határérték véges" },
+        { "id": "zero", "label": "Az integrandus mindenhol nulla" },
+        { "id": "periodic", "label": "A függvény periodikus" }
+      ],
+      "answer": "finite",
+      "hint": "A végtelen határt vagy szingularitást határértékkel kezeljük."
+    }
+  },
+  {
+    "id": "02-multiple-integrals",
+    "moduleId": "02-integration",
+    "order": 4,
+    "title": "Többszörös integrálok",
+    "summary": "Felhalmozás területen és térfogaton, koordinátaváltás és sűrűségek.",
+    "estimatedMinutes": 45,
+    "prerequisiteLessonIds": [
+      "02-definite-accumulation",
+      "00-vectors-coordinates"
+    ],
+    "skill": {
+      "id": "skill-multiple-integrals",
+      "title": "Többszörös integrál",
+      "description": "Két- és háromdimenziós tartományokon definiált mennyiségek integrálása.",
+      "category": "calculus"
+    },
+    "realWorldProblem": "Egy membrán teljes tömegét vagy egy helyiség hangenergia-eloszlását térbeli sűrűségből kell összegezni.",
+    "intuition": [
+      "A többszörös integrál apró terület- vagy térfogatelemek hozzájárulását adja össze.",
+      "A koordinátaváltás megváltoztatja az elemek méretét, ezért Jacobi-tényező kell."
+    ],
+    "formalModel": "M = ∬ᴰ ρ(x,y)dA",
+    "applications": [
+      "Membrán tömege változó felületi sűrűségből.",
+      "Térbeli hangnyomásenergia összegzése."
+    ],
+    "checkpoint": {
+      "prompt": "Mit ad össze a ∬ρ(x,y)dA kifejezés?",
+      "options": [
+        {
+          "id": "cells",
+          "label": "A kis területelemek sűrűség szerinti hozzájárulását"
+        },
+        { "id": "edges", "label": "Csak a tartomány kerületét" },
+        { "id": "maximum", "label": "Csak ρ maximumát" }
+      ],
+      "answer": "cells",
+      "hint": "A dA egy infinitézimális területelem."
+    }
+  },
+  {
+    "id": "02-audio-energy-convolution",
+    "moduleId": "02-integration",
+    "order": 5,
+    "title": "RMS, jelenergia és konvolúció",
+    "summary": "Az integrálás audióban: effektív szint, energia, átlagteljesítmény és súlyozott felhalmozás.",
+    "estimatedMinutes": 50,
+    "prerequisiteLessonIds": ["02-numerical-improper"],
+    "skill": {
+      "id": "skill-signal-integrals",
+      "title": "Jelintegrálok",
+      "description": "RMS, energia, teljesítmény és folytonos konvolúció integrálalapú értelmezése.",
+      "category": "dsp"
+    },
+    "realWorldProblem": "Azonos csúcsszintű jelek hallható ereje és energiája eltérhet, egy rendszer kimenete pedig a múlt súlyozott összege.",
+    "intuition": [
+      "A négyzetelés pozitívvá teszi az előjeles jel energiajárulékát.",
+      "A konvolúció minden késleltetett bemenetet az impulzusválasz megfelelő súlyával összegez."
+    ],
+    "formalModel": "xRMS = √(1/T ∫₀ᵀx²dt),   y(t)=∫x(τ)h(t−τ)dτ",
+    "applications": [
+      "RMS és jelenergia számítása.",
+      "Impulzusválasz alkalmazása konvolúciós zengetésben."
+    ],
+    "checkpoint": {
+      "prompt": "Miért négyzeteljük a jelet RMS számításakor?",
+      "options": [
+        {
+          "id": "positive",
+          "label": "Hogy az ellentétes előjelek ne oltsák ki egymást"
+        },
+        {
+          "id": "frequency",
+          "label": "Hogy megduplázzuk a mintavételi frekvenciát"
+        },
+        { "id": "phase", "label": "Hogy minden jel fázisa nulla legyen" }
+      ],
+      "answer": "positive",
+      "hint": "A pozitív és negatív félhullám egyaránt energiát hordoz."
+    }
+  }
+]

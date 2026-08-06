@@ -1,0 +1,68 @@
+{
+  "id": "exponential-decay",
+  "moduleId": "01-change-and-calculus",
+  "order": 4,
+  "title": "Exponenciális lecsengés, időállandó és audió burkológörbék",
+  "summary": "Értsd meg, hogyan írja le ugyanaz a képlet egy kompresszor release görbéjét, egy kondenzátor kisülését és más fizikai rendszereket.",
+  "skillIds": ["exponential-functions", "time-constant"],
+  "prerequisiteLessonIds": ["00-exp-log"],
+  "estimatedMinutes": 35,
+  "labIds": ["exponential-decay-lab"],
+  "exerciseTemplateIds": [
+    "exponential-decay-basic",
+    "solve-decay-time",
+    "compare-time-constants",
+    "estimate-time-constant",
+    "discrete-decay-coefficient"
+  ],
+  "sections": [
+    {
+      "type": "real-world-problem",
+      "title": "Miért nem egyenes a release görbe?",
+      "body": "Egy kompresszor gain reduction értéke eleinte gyorsan, később egyre lassabban tér vissza nullához. A pillanatnyi változás nagysága attól függ, mennyi van még hátra."
+    },
+    {
+      "type": "interactive",
+      "title": "Figyeld meg a lecsengést",
+      "body": "Változtasd az időállandót és a kezdeti értéket. Az egy időállandóhoz tartozó pont mindig ugyanarra a relatív magasságra esik.",
+      "labId": "exponential-decay-lab"
+    },
+    {
+      "type": "intuition",
+      "title": "Arányos változás",
+      "body": "Az exponenciális lecsengés során azonos időközök alatt nem azonos mennyiség, hanem azonos arány tűnik el. Emiatt a görbe soha nem éri el pontosan a nullát."
+    },
+    {
+      "type": "formula",
+      "title": "A matematikai modell",
+      "body": "A₀ a kezdeti érték, t az eltelt idő, τ pedig az időállandó. t=τ esetén e⁻¹≈0,368, tehát az eredeti érték 36,8%-a marad.",
+      "formula": "A(t) = A₀ · e^(−t/τ)"
+    },
+    {
+      "type": "worked-example",
+      "title": "Példa: kompresszor release",
+      "body": "Legyen A₀=1, τ=0,5 s, és keressük A(1 s)-et.",
+      "steps": [
+        "A(1)=1·e^(−1/0,5)",
+        "A(1)=e⁻²",
+        "A(1)≈0,135, vagyis 13,5% marad"
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "Diszkrét megvalósítás",
+      "body": "Digitális rendszerben mintánként szorozzuk az előző értéket α-val. A mintavételi frekvencia változásakor α-t újra kell számítani.",
+      "formula": "y[n] = α·y[n−1],   α = e^(−1/(fₛ·τ))"
+    },
+    {
+      "type": "reflection",
+      "title": "Gondold tovább",
+      "body": "Kapcsold össze a görbe alakját a hallott és fizikai jelenségekkel.",
+      "questions": [
+        "Miben hallatszana másképp egy lineáris release?",
+        "Mi történik, ha ugyanazt az α értéket kétszeres mintavételi frekvencián használod?",
+        "Milyen más rendszerben láttál hasonló lecsengést?"
+      ]
+    }
+  ]
+}

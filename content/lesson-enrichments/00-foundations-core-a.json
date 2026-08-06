@@ -1,0 +1,415 @@
+[
+  {
+    "lessonId": "00-fractions-ratios-percent",
+    "sections": [
+      {
+        "type": "objectives",
+        "title": "Biztos tudás a lecke végére",
+        "body": "Az aránykezelés akkor stabil, ha ugyanazt a kapcsolatot tört, tizedes és százalék alakban is felismered.",
+        "items": [
+          "Törtet egyszerűsítesz és közös nevezőre hozol.",
+          "Arányt tizedes és százalék alakra váltasz.",
+          "Százalékos növekedést és csökkenést az eredeti értékhez viszonyítasz.",
+          "Megkülönbözteted a relatív és a százalékpontos változást."
+        ]
+      },
+      {
+        "type": "worked-example",
+        "title": "Példa: wet/dry keverés",
+        "body": "Egy jel 30% wet és 70% dry arányban keveredik.",
+        "steps": [
+          "A százalékos súlyok tizedes alakban 0,30 és 0,70.",
+          "Ellenőrzés: 0,30+0,70=1, tehát a teljes arányt felosztottuk.",
+          "Ha a dry minta 0,4, a wet minta 0,2, a keverék 0,70·0,4+0,30·0,2=0,34.",
+          "A százalékok nem garantálnak azonos érzékelt hangosságot; itt lineáris amplitúdósúlyokról beszélünk."
+        ]
+      },
+      {
+        "type": "common-mistakes",
+        "title": "Gyakori arányhibák",
+        "body": "Mindig nevezd meg, mihez viszonyítasz.",
+        "items": [
+          {
+            "mistake": "20%-os növekedést 20 hozzáadásának veszek.",
+            "correction": "A növekmény az eredeti érték 0,20-szorosa."
+          },
+          {
+            "mistake": "A 25%-ot 0,25% alakban helyettesítem.",
+            "correction": "25%=0,25, míg 0,25%=0,0025."
+          },
+          {
+            "mistake": "A/B és B/A arányt felcserélem.",
+            "correction": "Írd ki szöveggel a számlálót és nevezőt a behelyettesítés előtt."
+          }
+        ]
+      }
+    ],
+    "checkpoints": [
+      {
+        "id": "fraction-add",
+        "title": "Törtek összeadása",
+        "prompt": "Mennyi 1/3+1/6?",
+        "difficulty": 1,
+        "context": "abstract",
+        "options": [
+          { "id": "half", "label": "1/2" },
+          { "id": "two9", "label": "2/9" },
+          { "id": "two6", "label": "2/6" }
+        ],
+        "answer": "half",
+        "hint": "A közös nevező 6: 1/3=2/6."
+      },
+      {
+        "id": "percent-increase",
+        "title": "Százalékos növekedés",
+        "prompt": "Egy 80 ms-os attack 25%-kal nő. Mi az új érték?",
+        "difficulty": 2,
+        "context": "audio",
+        "options": [
+          { "id": "100", "label": "100 ms" },
+          { "id": "105", "label": "105 ms" },
+          { "id": "60", "label": "60 ms" }
+        ],
+        "answer": "100",
+        "hint": "80·1,25 értékét keresd."
+      },
+      {
+        "id": "reverse-percent",
+        "title": "Visszaszámítás százalékból",
+        "prompt": "Egy 20%-os csökkentés után 64 marad. Mennyi volt az eredeti érték?",
+        "difficulty": 3,
+        "context": "abstract",
+        "options": [
+          { "id": "80", "label": "80" },
+          { "id": "768", "label": "76,8" },
+          { "id": "512", "label": "51,2" }
+        ],
+        "answer": "80",
+        "hint": "A maradék az eredeti 80%-a: 0,8·x=64."
+      },
+      {
+        "id": "percentage-points",
+        "title": "Százalék vagy százalékpont",
+        "prompt": "A találati arány 60%-ról 75%-ra nő. Hány százalékpontos a növekedés?",
+        "difficulty": 2,
+        "context": "audio",
+        "options": [
+          { "id": "15", "label": "15 százalékpont" },
+          { "id": "25", "label": "25 százalékpont" },
+          { "id": "135", "label": "135 százalékpont" }
+        ],
+        "answer": "15",
+        "hint": "Százalékpontnál a két százalékértéket közvetlenül vond ki."
+      }
+    ]
+  },
+  {
+    "lessonId": "00-powers-roots-scientific",
+    "sections": [
+      {
+        "type": "objectives",
+        "title": "Mit kell magabiztosan kezelned?",
+        "body": "A hatványazonosságokat nem memóriatrükként, hanem ismételt szorzás rövidítéseként használjuk.",
+        "items": [
+          "Azonos alapú hatványokat szorzol és osztasz.",
+          "Negatív és tört kitevőt értelmezel.",
+          "Normálalakban végzel nagyságrendi számítást.",
+          "Gyökös kifejezés értelmezési tartományát ellenőrzöd."
+        ]
+      },
+      {
+        "type": "worked-example",
+        "title": "Példa: mikroszekundumból másodperc",
+        "body": "Egy audio buffer feldolgozása 250 μs.",
+        "steps": [
+          "A mikro előtag 10⁻⁶, ezért 250 μs=250·10⁻⁶ s.",
+          "Normalizálva 250·10⁻⁶=2,5·10²·10⁻⁶=2,5·10⁻⁴ s.",
+          "Tizedes alakban ez 0,00025 s.",
+          "Ellenőrzés: ezredmásodpercnél kisebb értéket vártunk, tehát a nagyságrend hihető."
+        ]
+      },
+      {
+        "type": "common-mistakes",
+        "title": "Hatványozási csapdák",
+        "body": "A zárójel a bázis része.",
+        "items": [
+          {
+            "mistake": "(a+b)²=a²+b²",
+            "correction": "A kereszttag is kell: (a+b)²=a²+2ab+b²."
+          },
+          { "mistake": "a⁰=0", "correction": "Nem nulla a esetén a⁰=1." },
+          {
+            "mistake": "−3²=9",
+            "correction": "Hatványozás előbb történik: −3²=−9, míg (−3)²=9."
+          }
+        ]
+      }
+    ],
+    "checkpoints": [
+      {
+        "id": "negative-exponent",
+        "title": "Negatív kitevő",
+        "prompt": "Mennyi 2⁻³?",
+        "difficulty": 1,
+        "context": "abstract",
+        "options": [
+          { "id": "eighth", "label": "1/8" },
+          { "id": "minus8", "label": "−8" },
+          { "id": "sixth", "label": "1/6" }
+        ],
+        "answer": "eighth",
+        "hint": "a⁻ⁿ=1/aⁿ."
+      },
+      {
+        "id": "root-power",
+        "title": "Gyök és hatvány",
+        "prompt": "Mennyi √(9·16)?",
+        "difficulty": 1,
+        "context": "mechanics",
+        "options": [
+          { "id": "12", "label": "12" },
+          { "id": "25", "label": "25" },
+          { "id": "144", "label": "144" }
+        ],
+        "answer": "12",
+        "hint": "9·16=144, amelynek pozitív négyzetgyöke 12."
+      },
+      {
+        "id": "scientific-multiply",
+        "title": "Normálalak szorzása",
+        "prompt": "Melyik a (4·10⁶)/(2·10²) normálalakja?",
+        "difficulty": 2,
+        "context": "electronics",
+        "options": [
+          { "id": "2e4", "label": "2·10⁴" },
+          { "id": "2e3", "label": "2·10³" },
+          { "id": "8e8", "label": "8·10⁸" }
+        ],
+        "answer": "2e4",
+        "hint": "A számrészeket oszd, a kitevőket vond ki."
+      },
+      {
+        "id": "square-amplitude",
+        "title": "Négyzetes skálázás",
+        "prompt": "Ha egy jel amplitúdója háromszorosára nő, hányszorosára nő az amplitúdó négyzetével arányos teljesítmény?",
+        "difficulty": 2,
+        "context": "audio",
+        "options": [
+          { "id": "9", "label": "9-szeresére" },
+          { "id": "3", "label": "3-szorosára" },
+          { "id": "6", "label": "6-szorosára" }
+        ],
+        "answer": "9",
+        "hint": "A skálafaktort is négyzetre kell emelni: 3²."
+      }
+    ]
+  },
+  {
+    "lessonId": "00-algebra-equations",
+    "sections": [
+      {
+        "type": "objectives",
+        "title": "Algebrai rutinok",
+        "body": "A cél nem a szimbólumok mozgatása, hanem az egyenértékű állítások megőrzése.",
+        "items": [
+          "Zárójelet bontasz és közös tényezőt emelsz ki.",
+          "Lineáris és egyszerű másodfokú egyenletet oldasz meg.",
+          "Képletet tetszőleges paraméterre rendezel.",
+          "Ellenőrzöd a megoldást visszahelyettesítéssel és tartományvizsgálattal."
+        ]
+      },
+      {
+        "type": "worked-example",
+        "title": "Példa: RC-képlet rendezése",
+        "body": "Az fc=1/(2πRC) képletből C-t keressük.",
+        "steps": [
+          "Szorozd meg mindkét oldalt 2πRC-vel: 2πRCfc=1.",
+          "Oszd el 2πRfc-vel: C=1/(2πRfc).",
+          "Egység: 1/(Ω·Hz)=F, tehát a rendezés dimenzióhelyes.",
+          "A megoldást az eredeti képletbe visszahelyettesítve ugyanazt az fc-t kell kapni."
+        ]
+      },
+      {
+        "type": "common-mistakes",
+        "title": "Egyenletrendezési hibák",
+        "body": "Minden lépés legyen visszafordítható vagy a korlátozása legyen kimondva.",
+        "items": [
+          {
+            "mistake": "Egy tagot átviszek, és csak az előjelét változtatom.",
+            "correction": "Valójában ugyanazt a műveletet végzed mindkét oldalon; ezt írd ki, ha bizonytalan vagy."
+          },
+          {
+            "mistake": "Kifejezéssel osztok, de nem vizsgálom, lehet-e nulla.",
+            "correction": "Az osztó nulla esetét külön kell kezelni."
+          },
+          {
+            "mistake": "Négyzetre emelés után minden kapott gyököt elfogadok.",
+            "correction": "A nem ekvivalens átalakítás idegen gyököt adhat; helyettesíts vissza."
+          }
+        ]
+      }
+    ],
+    "checkpoints": [
+      {
+        "id": "expand",
+        "title": "Zárójel felbontása",
+        "prompt": "Melyik egyenlő 3(2x−5)+4 kifejezéssel?",
+        "difficulty": 1,
+        "context": "abstract",
+        "options": [
+          { "id": "6xminus11", "label": "6x−11" },
+          { "id": "6xminus1", "label": "6x−1" },
+          { "id": "5xminus11", "label": "5x−11" }
+        ],
+        "answer": "6xminus11",
+        "hint": "A 3-at a zárójel mindkét tagjával szorozd meg."
+      },
+      {
+        "id": "formula-rearrange",
+        "title": "Képletrendezés",
+        "prompt": "A v=s/t képletből hogyan fejezhető ki t, ha v≠0?",
+        "difficulty": 2,
+        "context": "mechanics",
+        "options": [
+          { "id": "sdivv", "label": "t=s/v" },
+          { "id": "vdivs", "label": "t=v/s" },
+          { "id": "sv", "label": "t=sv" }
+        ],
+        "answer": "sdivv",
+        "hint": "Először szorozz t-vel, majd ossz v-vel."
+      },
+      {
+        "id": "inequality",
+        "title": "Egyenlőtlenség",
+        "prompt": "Mi a  −2x>6 megoldása?",
+        "difficulty": 2,
+        "context": "abstract",
+        "options": [
+          { "id": "less", "label": "x<−3" },
+          { "id": "greater", "label": "x>−3" },
+          { "id": "less3", "label": "x<3" }
+        ],
+        "answer": "less",
+        "hint": "Negatív számmal osztáskor az egyenlőtlenség iránya megfordul."
+      },
+      {
+        "id": "factor",
+        "title": "Tényezőkre bontás",
+        "prompt": "Melyik x²−9 tényezős alakja?",
+        "difficulty": 2,
+        "context": "abstract",
+        "options": [
+          { "id": "difference", "label": "(x−3)(x+3)" },
+          { "id": "square", "label": "(x−3)²" },
+          { "id": "sum", "label": "(x−9)(x+1)" }
+        ],
+        "answer": "difference",
+        "hint": "Használd a négyzetek különbségét: a²−b²=(a−b)(a+b)."
+      }
+    ]
+  },
+  {
+    "lessonId": "00-functions-graphs",
+    "sections": [
+      {
+        "type": "objectives",
+        "title": "Függvényolvasási készségek",
+        "body": "Ugyanazt a kapcsolatot táblázatból, képletből, grafikonból és szövegből is fel kell ismerned.",
+        "items": [
+          "Azonosítod a bemenetet, kimenetet, domaint és értékkészletet.",
+          "Grafikonról monotonitást, zérushelyet és szélsőértéket olvasol le.",
+          "Függvénytranszformációt értelmezel.",
+          "Megkülönbözteted a függvényértéket a bemenettől és a meredekségtől."
+        ]
+      },
+      {
+        "type": "worked-example",
+        "title": "Példa: transfer curve",
+        "body": "Legyen y=tanh(2x) egy egyszerű telítési görbe.",
+        "steps": [
+          "x a bemeneti, y a kimeneti amplitúdó.",
+          "Kis x közelében a görbe majdnem egyenes, meredeksége körülbelül 2.",
+          "Nagy |x| mellett y ±1 felé telítődik, tehát a kimenet korlátos.",
+          "A függvény páratlan: az előjel megfordítására a kimenet előjele is megfordul."
+        ]
+      },
+      {
+        "type": "common-mistakes",
+        "title": "Grafikonolvasási hibák",
+        "body": "Előbb olvasd el a tengelyek feliratát és skáláját.",
+        "items": [
+          {
+            "mistake": "A grafikon magasságát összekeverem a meredekségével.",
+            "correction": "A függvényérték y-koordináta; a meredekség a lokális változás aránya."
+          },
+          {
+            "mistake": "A logaritmikus tengelyt lineárisként olvasom.",
+            "correction": "Nézd meg, azonos távolságok összeadást vagy szorzást jelentenek-e."
+          },
+          {
+            "mistake": "Egy függőleges egyenes metszéseit figyelmen kívül hagyom.",
+            "correction": "Ha ugyanahhoz az x-hez több y tartozik, a görbe nem y=f(x) függvény."
+          }
+        ]
+      }
+    ],
+    "checkpoints": [
+      {
+        "id": "domain",
+        "title": "Értelmezési tartomány",
+        "prompt": "Mi a f(x)=1/(x−2) valós értelmezési tartománya?",
+        "difficulty": 2,
+        "context": "abstract",
+        "options": [
+          { "id": "except2", "label": "Minden valós szám, kivéve x=2" },
+          { "id": "positive", "label": "Csak x>2" },
+          { "id": "all", "label": "Minden valós szám" }
+        ],
+        "answer": "except2",
+        "hint": "A nevező nem lehet nulla."
+      },
+      {
+        "id": "composition",
+        "title": "Függvénykompozíció",
+        "prompt": "Ha f(x)=2x és g(x)=x+3, mennyi f(g(4))?",
+        "difficulty": 2,
+        "context": "abstract",
+        "options": [
+          { "id": "14", "label": "14" },
+          { "id": "11", "label": "11" },
+          { "id": "16", "label": "16" }
+        ],
+        "answer": "14",
+        "hint": "Előbb g(4)=7, utána f(7)."
+      },
+      {
+        "id": "shift",
+        "title": "Grafikoneltolás",
+        "prompt": "Hogyan változik f(x) grafikonja f(x−3) esetén?",
+        "difficulty": 2,
+        "context": "abstract",
+        "options": [
+          { "id": "right", "label": "3 egységgel jobbra tolódik" },
+          { "id": "left", "label": "3 egységgel balra tolódik" },
+          { "id": "up", "label": "3 egységgel felfelé tolódik" }
+        ],
+        "answer": "right",
+        "hint": "Ugyanahhoz a belső argumentumhoz x-nek hárommal nagyobbnak kell lennie."
+      },
+      {
+        "id": "inverse",
+        "title": "Inverz függvény",
+        "prompt": "Ha f(x)=3x+6, mi f⁻¹(y)?",
+        "difficulty": 3,
+        "context": "abstract",
+        "options": [
+          { "id": "correct", "label": "(y−6)/3" },
+          { "id": "wrong", "label": "3y−6" },
+          { "id": "reciprocal", "label": "1/(3y+6)" }
+        ],
+        "answer": "correct",
+        "hint": "Oldd meg az y=3x+6 egyenletet x-re."
+      }
+    ]
+  }
+]
